@@ -57,3 +57,7 @@ au FileType coffee call CoffeeScriptFold()
 " => Lua section
 """""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""
+" => Markdown section
+"""""""""""""""""""""""""""""""
+autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} map <Leader>pr :!start chrome.exe "%:p"<CR>
