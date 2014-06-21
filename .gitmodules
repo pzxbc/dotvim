@@ -1,0 +1,51 @@
+[submodule "sources_non_forked/ack.vim"]
+	path = sources_non_forked/ack.vim
+	url = https://github.com/mileszs/ack.vim
+[submodule "sources_non_forked/bufexplorer"]
+	path = sources_non_forked/bufexplorer
+	url = https://github.com/corntrace/bufexplorer
+[submodule "sources_non_forked/ctrlp.vim"]
+	path = sources_non_forked/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim
+[submodule "sources_non_forked/goyo.vim"]
+	path = sources_non_forked/goyo.vim
+	url = https://github.com/junegunn/goyo.vim
+[submodule "sources_non_forked/nerdtree"]
+	path = sources_non_forked/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "sources_non_forked/taglist.vim"]
+	path = sources_non_forked/taglist.vim
+	url = https://github.com/vim-scripts/taglist.vim
+[submodule "sources_non_forked/vim-colors-solarized"]
+	path = sources_non_forked/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized
+[submodule "sources_non_forked/vim-misc"]
+	path = sources_non_forked/vim-misc
+	url = https://github.com/xolox/vim-misc
+[submodule "sources_non_forked/vim-surround"]
+	path = sources_non_forked/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "sources_non_forked/vim-expand-region"]
+	path = sources_non_forked/vim-expand-region
+	url = https://github.com/terryma/vim-expand-region
+[submodule "sources_non_forked/vim-multiple-cursors"]
+	path = sources_non_forked/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors
+[submodule "sources_non_forked/vim-fugitive"]
+	path = sources_non_forked/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "sources_non_forked/vim-airline"]
+	path = sources_non_forked/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "sources_non_forked/vim-zenroom2"]
+	path = sources_non_forked/vim-zenroom2
+	url = https://github.com/amix/vim-zenroom2
+[submodule "sources_non_forked/syntastic"]
+	path = sources_non_forked/syntastic
+	url = https://github.com/scrooloose/syntastic
+[submodule "sources_non_forked/vim-repeat"]
+	path = sources_non_forked/vim-repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "sources_non_forked/vim-commentary"]
+	path = sources_non_forked/vim-commentary
+	url = https://github.com/tpope/vim-commentary
