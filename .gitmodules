@@ -49,3 +49,15 @@
 [submodule "sources_non_forked/vim-commentary"]
 	path = sources_non_forked/vim-commentary
 	url = https://github.com/tpope/vim-commentary
+[submodule "sources_non_forked/vim-shell"]
+	path = sources_non_forked/vim-shell
+	url = https://github.com/xolox/vim-shell
+[submodule "sources_non_forked/vim-session"]
+	path = sources_non_forked/vim-session
+	url = https://github.com/xolox/vim-session
+[submodule "sources_non_forked/vim-auto-save"]
+	path = sources_non_forked/vim-auto-save
+	url = https://github.com/vim-scripts/vim-auto-save
+[submodule "sources_non_forked/supertab"]
+	path = sources_non_forked/supertab
+	url = https://github.com/ervandew/supertab
