@@ -64,3 +64,6 @@
 [submodule "sources_non_forked/vim-dispatch"]
 	path = sources_non_forked/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch
+[submodule "sources_non_forked/ctrlsf.vim"]
+	path = sources_non_forked/ctrlsf.vim
+	url = https://github.com/dyng/ctrlsf.vim

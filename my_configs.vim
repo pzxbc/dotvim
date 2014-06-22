@@ -9,11 +9,6 @@
 "show the line number
 set number
 
-"set the font
-"http://blog.163.com/liyilouis007@126/blog/static/3180905020113811452828/ 
-"关于Windows与Linux的配置需要参考这边文章
-"有待修改
-set guifont=YaHei\ Consolas\ Hybrid:h12
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
