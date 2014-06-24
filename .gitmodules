@@ -70,6 +70,3 @@
 [submodule "sources_non_forked/ctrlp-funky"]
 	path = sources_non_forked/ctrlp-funky
 	url = https://github.com/tacahiroy/ctrlp-funky
-[submodule "sources_non_forked/Mark--Karkat"]
-	path = sources_non_forked/Mark--Karkat
-	url = https://github.com/vim-scripts/Mark--Karkat

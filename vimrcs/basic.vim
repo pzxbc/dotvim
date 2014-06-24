@@ -162,6 +162,9 @@ set ffs=unix,dos,mac
 " Use utf-8 file encoding
 set fileencodings=utf-8,cp936
 
+" Use utf-8 file for the new file
+set fileencoding=utf-8
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo

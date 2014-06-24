@@ -145,3 +145,9 @@ let g:auto_save=1  " enable AutoSave on Vim startup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:session_autoload='yes'
 let g:session_autosave='yes'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Mark
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <unique> <silent> <Leader>ha <Esc>:Mark<cr>
+nmap <unique> <silent> <Leader>hc <Esc>:MarkClear<cr>
