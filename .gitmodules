@@ -70,3 +70,9 @@
 [submodule "sources_non_forked/ctrlp-funky"]
 	path = sources_non_forked/ctrlp-funky
 	url = https://github.com/tacahiroy/ctrlp-funky
+[submodule "sources_non_forked/rainbow_parentheses"]
+	path = sources_non_forked/rainbow_parentheses
+	url = https://github.com/kien/rainbow_parentheses.vim
+[submodule "sources_non_forked\\GoldenView.Vim"]
+	path = sources_non_forked\\GoldenView.Vim
+	url = https://github.com/zhaocai/GoldenView.Vim

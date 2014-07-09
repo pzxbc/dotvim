@@ -59,7 +59,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving
-nmap <leader>w :w!<cr>
+"nmap <leader>w :w!<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -148,6 +148,7 @@ set background=dark
 if has("gui_running")
     set guioptions-=T
     set guioptions-=e
+    "set guioptions-=m
     set t_Co=256
     set guitablabel=%M\ %t
 endif
@@ -223,10 +224,10 @@ map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <S-j> <C-W>j
+map <S-k> <C-W>k
+map <S-h> <C-W>h
+map <S-l> <C-W>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>

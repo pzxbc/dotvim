@@ -49,6 +49,8 @@ map <c-b> :CtrlPBuffer<cr>
 
 let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+ 
+let g:ctrlp_clear_cache_on_exit = 0
 
 """"""""""""""""""""""""""""""
 " => ctrlp-funky
@@ -149,5 +151,30 @@ let g:session_autosave='yes'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mark
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <unique> <silent> <Leader>ha <Esc>:Mark<cr>
-nmap <unique> <silent> <Leader>hc <Esc>:MarkClear<cr>
+nmap <silent> <Leader>ha <Esc>:Mark<cr>
+nmap <silent> <Leader>hc <Esc>:MarkClear<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => rainbow_parentheses
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <leader>hp <Esc>:RainbowParenthesesToggle<cr>
+\:RainbowParenthesesLoadRound<cr>
+\:RainbowParenthesesLoadSquare<cr>
+\:RainbowParenthesesLoadBraces<cr>
+\:RainbowParenthesesLoadChevrons<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => GoldenView
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:goldenview__enable_default_mapping = 0
+" 1. split to tiled windows
+nmap <silent> <Leader>gv  <Plug>GoldenViewSplit
+
+" 2. quickly switch current window with the main pane
+" and toggle back
+nmap <silent> <F9>   <Plug>GoldenViewSwitchMain
+nmap <silent> <C-F9> <Plug>GoldenViewSwitchToggle
+
+" 3. jump to next and previous window
+nmap <silent> <Leader>w  <Plug>GoldenViewNext
+nmap <silent> <Leader>W  <Plug>GoldenViewPrevious
