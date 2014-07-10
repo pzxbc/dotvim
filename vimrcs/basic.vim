@@ -143,13 +143,15 @@ catch
 endtry
 
 set background=dark
+" 终端和GUI下都使用256色
+set t_Co=256
 
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
     set guioptions-=e
     "set guioptions-=m
-    set t_Co=256
+    " set t_Co=256
     set guitablabel=%M\ %t
 endif
 

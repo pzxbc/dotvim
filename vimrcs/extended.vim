@@ -37,8 +37,10 @@ if has("gui_running")
     colorscheme peaksea
 	" colorscheme solarized
 else
-    colorscheme desert
-    let g:colors_name="desert"
+    colorscheme peaksea
+	" colorscheme solarized
+    " colorscheme desert
+    " let g:colors_name="desert"
 endif
 
 
