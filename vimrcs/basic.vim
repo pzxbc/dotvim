@@ -142,9 +142,9 @@ try
 catch
 endtry
 
-set background=dark
 " 终端和GUI下都使用256色
 set t_Co=256
+set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
