@@ -57,8 +57,13 @@ au FileType coffee call CoffeeScriptFold()
 " => Lua section
 """""""""""""""""""""""""""""""
 autocmd FileType lua nmap <buffer> <f5> :!lua %<cr>
-au BufRead,BufNewFile *.lua            set foldmethod=syntax
-au BufRead,BufNewFile *.luah           set foldmethod=syntax
+" au BufRead,BufNewFile *.lua            set foldmethod=syntax
+" au BufRead,BufNewFile *.luah           set foldmethod=syntax
+
+""""""""""""""""""""""""""""""
+" => Python section
+"""""""""""""""""""""""""""""""
+autocmd FileType py nmap <buffer> <f5> :!python %<cr>
 
 """"""""""""""""""""""""""""""
 " => Markdown section
