@@ -73,3 +73,6 @@
 [submodule "sources_non_forked/rainbow_parentheses"]
 	path = sources_non_forked/rainbow_parentheses
 	url = https://github.com/kien/rainbow_parentheses.vim
+[submodule "sources_non_forked/csv.vim"]
+	path = sources_non_forked/csv.vim
+	url = https://github.com/chrisbra/csv.vim
