@@ -297,7 +297,9 @@ elseif &background=='dark'
   hi SignColumn		guifg=#e0e0e0	guibg=#202020	gui=NONE
   hi IncSearch		guifg=White	guibg=DarkRed	gui=NONE
   hi StatusLineNC	guifg=#000000	guibg=#c0c0c0	gui=NONE
-  hi VertSplit		guifg=#000000	guibg=#c0c0c0	gui=NONE
+  " hi StatusLineNC	guifg=#202020	guibg=#202020	gui=NONE
+  " hi VertSplit		guifg=#000000	guibg=#c0c0c0	gui=NONE
+  hi VertSplit		guifg=White	guibg=#202020	gui=NONE
   hi Underlined		guifg=#80a0ff	guibg=NONE	gui=underline 
   hi Ignore		guifg=#000000	guibg=NONE
   " NOTE THIS IS IN THE COOL SECTION
