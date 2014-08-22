@@ -178,3 +178,9 @@ nmap <silent> <C-F9> <Plug>GoldenViewSwitchToggle
 " 3. jump to next and previous window
 nmap <silent> <Leader>w  <Plug>GoldenViewNext
 nmap <silent> <Leader>W  <Plug>GoldenViewPrevious
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Transparency windows
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 如果不想要透明就取消下面的注释
+let g:loaded_transparency_windows_vim=1

@@ -1,0 +1,5 @@
+vim 更改分隔条的颜色
+  hi VertSplit		guifg=White	guibg=#202020	gui=NONE
+
+状态条的分隔栏的颜色
+  hi StatusLineNC	guifg=#000000	guibg=#202020	gui=NONE

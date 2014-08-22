@@ -76,3 +76,9 @@
 [submodule "sources_non_forked/csv.vim"]
 	path = sources_non_forked/csv.vim
 	url = https://github.com/chrisbra/csv.vim
+[submodule "sources_non_forked/vimtweak"]
+	path = sources_non_forked/vimtweak
+	url = https://github.com/mattn/vimtweak
+[submodule "sources_non_forked/transparency-windows-vim"]
+	path = sources_non_forked/transparency-windows-vim
+	url = https://github.com/mattn/transparency-windows-vim
