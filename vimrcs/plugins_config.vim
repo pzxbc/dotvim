@@ -184,3 +184,19 @@ nmap <silent> <Leader>W  <Plug>GoldenViewPrevious
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 如果不想要透明就取消下面的注释
 let g:loaded_transparency_windows_vim=1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => tabular
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" if exists(":Tabularize")
+"   nmap <Leader>a=  :Tabularize /=<CR>
+"   map <Leader>a=  :Tabularize /=<CR>
+"   map <Leader>a:  :Tabularize /:\zs<CR>
+"   map <Leader>a:  :Tabularize /:\zs<CR>
+" endif
+nmap <Leader>a=  :Tabularize /=<CR>
+map <Leader>a=  :Tabularize /=<CR>
+nmap <Leader>a:  :Tabularize /:<CR>
+map <Leader>a:  :Tabularize /:<CR>
+" nmap <Leader>a|  :Tabularize /|<CR>
+" map <Leader>a|  :Tabularize /|<CR>
+

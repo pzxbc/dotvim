@@ -82,3 +82,9 @@
 [submodule "sources_non_forked/transparency-windows-vim"]
 	path = sources_non_forked/transparency-windows-vim
 	url = https://github.com/mattn/transparency-windows-vim
+[submodule "sources_non_forked/vim-markdown"]
+	path = sources_non_forked/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown
+[submodule "sources_non_forked\\tabular"]
+	path = sources_non_forked\\tabular
+	url = https://github.com/godlygeek/tabular

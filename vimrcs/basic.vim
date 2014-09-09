@@ -226,10 +226,10 @@ map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <S-j> <C-W>j
-map <S-k> <C-W>k
-map <S-h> <C-W>h
-map <S-l> <C-W>l
+" map <S-j> <C-W>j
+" map <S-k> <C-W>k
+" map <S-h> <C-W>h
+" map <S-l> <C-W>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
