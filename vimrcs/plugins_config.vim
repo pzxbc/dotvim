@@ -200,3 +200,18 @@ map <Leader>a:  :Tabularize /:<CR>
 " nmap <Leader>a|  :Tabularize /|<CR>
 " map <Leader>a|  :Tabularize /|<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => neocomplcache.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:neocomplcache_enable_at_startup = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => zeal.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('win32') || has('win64')
+    let g:zv_zeal_directory = "D:\\Program Files (x86)\\zeal\\zeal.exe"
+else
+    let g:zv_zeal_directory = "/usr/bin/zeal"
+endif
+nmap <unique> <Leader>zd  <Plug>Zeavim
+vmap <unique> <Leader>zd  <Plug>ZVVisSelection
