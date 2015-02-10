@@ -85,6 +85,15 @@
 [submodule "sources_non_forked/vim-markdown"]
 	path = sources_non_forked/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown
-[submodule "sources_non_forked\\tabular"]
-	path = sources_non_forked\\tabular
+[submodule "sources_non_forked/tabular"]
+	path = sources_non_forked/tabular
 	url = https://github.com/godlygeek/tabular
+[submodule "sources_non_forked/neocomplcache.vim"]
+	path = sources_non_forked/neocomplcache.vim
+	url = https://github.com/Shougo/neocomplcache.vim
+[submodule "sources_non_forked/zeavim.vim"]
+	path = sources_non_forked/zeavim.vim
+	url = https://github.com/KabbAmine/zeavim.vim
+[submodule "sources_non_forked/indentLine"]
+	path = sources_non_forked/indentLine
+	url = https://github.com/Yggdroot/indentLine
