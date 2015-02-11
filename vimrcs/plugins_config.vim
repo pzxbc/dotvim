@@ -37,12 +37,9 @@ let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 let g:ctrlp_clear_cache_on_exit = 0
 
 """"""""""""""""""""""""""""""
-" => ctrlp-funky
+" => ctrlp-extensions
 """"""""""""""""""""""""""""""
-let g:ctrlp_extensions = ['funky']
-nnoremap <Leader>fu :CtrlPFunky<Cr>
-" narrow the list down with a word under cursor
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+nmap <Leader>py :CtrlPYankring<Cr>
 
 """"""""""""""""""""""""""""""
 " => ZenCoding
