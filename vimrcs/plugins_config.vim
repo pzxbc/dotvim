@@ -82,10 +82,20 @@ map <leader>nf :NERDTreeFind<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => taglist
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <F8> :TlistToggle<CR>
-let g:Tlist_Show_One_File=1
-let g:Tlist_Exit_OnlyWindow=1
-let g:Tlist_Use_Right_Window=1
+" nnoremap <silent> <F8> :TlistToggle<CR>
+" let g:Tlist_Show_One_File=1
+" let g:Tlist_Exit_OnlyWindow=1
+" let g:Tlist_Use_Right_Window=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => easytags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:easytags_async=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => tagbar
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <F8> :TagbarToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-multiple-cursors
@@ -105,14 +115,6 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 " => vim-airline config (force color)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme="luna"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vimroom
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:goyo_width=100
-let g:goyo_margin_top = 2
-let g:goyo_margin_bottom = 2
-nnoremap <silent> <leader>z :Goyo<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -155,22 +157,6 @@ nnoremap <silent> <leader>rp <Esc>:RainbowParenthesesToggle<cr>
 \:RainbowParenthesesLoadSquare<cr>
 \:RainbowParenthesesLoadBraces<cr>
 \:RainbowParenthesesLoadChevrons<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => GoldenView
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:goldenview__enable_default_mapping = 0
-" 1. split to tiled windows
-nmap <silent> <Leader>gv  <Plug>GoldenViewSplit
-
-" 2. quickly switch current window with the main pane
-" and toggle back
-nmap <silent> <F9>   <Plug>GoldenViewSwitchMain
-nmap <silent> <C-F9> <Plug>GoldenViewSwitchToggle
-
-" 3. jump to next and previous window
-nmap <silent> <Leader>w  <Plug>GoldenViewNext
-nmap <silent> <Leader>W  <Plug>GoldenViewPrevious
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Transparency windows
