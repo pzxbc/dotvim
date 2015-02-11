@@ -65,8 +65,3 @@ autocmd FileType lua nmap <buffer> <f5> :!lua %<cr>
 """""""""""""""""""""""""""""""
 autocmd FileType py nmap <buffer> <f5> :!python %<cr>
 
-""""""""""""""""""""""""""""""
-" => Markdown section
-"""""""""""""""""""""""""""""""
-autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} nmap <f5> :Start! chrome.exe "%:p"<CR>
-" autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} nmap <f5> :Start! cmd.exe<CR>

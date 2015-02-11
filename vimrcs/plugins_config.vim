@@ -4,14 +4,6 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
-""""""""""""""""""""""""""""""
-" => Load pathogen paths
-""""""""""""""""""""""""""""""
-call pathogen#infect('~/.vim_runtime/sources_forked/{}')
-call pathogen#infect('~/.vim_runtime/sources_non_forked/{}')
-call pathogen#helptags()
-
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
 """"""""""""""""""""""""""""""
@@ -19,14 +11,6 @@ let g:bufExplorerDefaultHelp=1
 let g:bufExplorerShowRelativePath=0
 let g:bufExplorerFindActive=1
 let g:bufExplorerSortBy='mru'
-map <leader>be :BufExplorer<cr>
-
-
-""""""""""""""""""""""""""""""
-" => MRU plugin
-""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
 
 """"""""""""""""""""""""""""""
 " => YankRing
@@ -136,6 +120,15 @@ nnoremap <silent> <leader>z :Goyo<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_python_checkers=['pyflakes']
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-auto-save
@@ -157,7 +150,7 @@ nmap <silent> <Leader>hc <Esc>:MarkClear<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => rainbow_parentheses
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <leader>hp <Esc>:RainbowParenthesesToggle<cr>
+nnoremap <silent> <leader>rp <Esc>:RainbowParenthesesToggle<cr>
 \:RainbowParenthesesLoadRound<cr>
 \:RainbowParenthesesLoadSquare<cr>
 \:RainbowParenthesesLoadBraces<cr>

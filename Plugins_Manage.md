@@ -25,6 +25,8 @@ git submodule update
 # git submodule add 插件git仓库地址(也可以是http地址) 存放插件目录(自己修改源码的放在sources_forked目录中，直接使用的放在sources_non_forked目录中)
 git submodule add git://github.com/tpope/vim-markdown.git sources_non_forked/vim-markdown
 ```
+git submodule add url ./path/plugin_dir_name
+注意使用/
 
 ### 升级插件
 
