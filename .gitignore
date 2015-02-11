@@ -7,3 +7,4 @@ tags
 bundle/*
 !bundle/Vundle.vim
 !bundle/peaksea
+!bundle/mark

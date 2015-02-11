@@ -47,6 +47,7 @@ Plugin 'KabbAmine/zeavim.vim'
 " Plugin 'file:///home/gmarik/path/to/plugin'
 " Plugin 'file:///Users/gzpengzhangxiang/.vim_runtime/bundle/peaksea'
 Plugin 'file:///~/.vim_runtime/bundle/peaksea'
+Plugin 'file:///~/.vim_runtime/bundle/mark'
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
