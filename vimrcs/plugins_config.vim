@@ -65,6 +65,11 @@ set grepprg=/bin/grep\ -nH
 """"""""""""""""""""""""""""""
 let g:ctrlsf_ackprg = 'ack'
 
+""""""""""""""""""""""""""""""
+" => vim-maximizer
+""""""""""""""""""""""""""""""
+nmap <leader>mt ::MaximizerToggle<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -87,6 +92,7 @@ map <leader>nf :NERDTreeFind<cr>
 " => easytags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:easytags_async=1
+let g:easytags_cmd = 'C:\Users\gzpengzhangxiang\vim_tools_doc\tools\bin\ctags.EXE'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => tagbar
