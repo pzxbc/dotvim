@@ -32,13 +32,15 @@
 
 ###安装步骤：
 1.Clone配置
-	git clone https://github.com/pzxbc/dotvim ~/.vim_runtime
+	git clone https://github.com/pzxbc/dotvim ~/.vim_runtime --depth=1
+	(只取最新版本，如果需要历史版本，去掉--depth选项)
 2.创建.vimrc文件
 	create_vimrc.sh
 3.安装插件辅助工具
 	参考bin目录下的readme.txt
 4.安装Vim插件
 	启动Vim，执行:VundleInstall
+	(第一次启动会提示找不到solarized主题，安装完插件后重启即可)
 5.修改vimrcs/plugins_config.vim
 	
 	let g:easytags_cmd = 'C:\Users\gzpengzhangxiang\.vim_runtime\bin\ctags.exe'

@@ -54,6 +54,10 @@ export CONF_OPT_COMPBY='"--with-compiledby=xx@xx.com"'
 3.5 确保使用的是新编译的Vim
 	
 	which vim
+	在有些系统里，不会根据PATH去寻找vim，根据editor之类的，请参考附录中的4网址怎么设置
+	或者
+	在.bashrc中设置
+		alias vim='/usr/local/bin/vim'
 
 参考：
 1.http://vim.wikia.com/wiki/Getting_the_Vim_source_with_Mercurial
