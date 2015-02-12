@@ -1,1 +1,1 @@
-ln -s ~/.vim_runtime/vimrc ~/.vimrc
+ln -s ~/.vim_runtime/.vimrc ~/.vimrc
