@@ -1,0 +1,62 @@
+在Unbuntu/Debian平台下编译vim
+
+1. 安装编译vim需要的环境
+	
+	sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
+    libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
+    libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
+    ruby-dev mercurial
+	
+	或者
+	
+	apt-get build-dep vim
+
+2. 下载vim源码包
+	
+	mkdir -p ~/.build/hg
+	cd ~/.build/hg
+	(date && hg clone https://vim.googlecode.com/hg/ vim) 2>&1 |tee hg-vim.log
+
+3. 编译vim
+3.0 切换至vim目录
+
+	cd ~/.build/hg/vim
+3.1 创建一个env.sh文件，写入如下内容(配置的导出变量名称可以从src/Makefile中查找)
+
+#!/bin/bash
+export CONF_OPT_GUI='--disable-gui'
+export CONF_OPT_FEAT='--with-features=huge'
+export CONF_OPT_MULTIBYTE='--enable-multibyte'
+export CONF_OPT_PYTHON='--enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7/config'
+export CONF_OPT_RUBY='--enable-rubyinterp'
+export CONF_OPT_CSCOPE='--enable-cscope'
+export CONF_OPT_COMPBY='"--with-compiledby=xx@xx.com"'
+
+3.2 执行这个脚本，导出环境变量到shell中
+
+	source env.sh
+
+3.3 编译、安装
+
+	make distclean
+	make
+	make install
+	
+	查看编译的vim
+		ls -l src/vim
+	查看编译vim的特征
+		src/vim --version | more
+
+3.4 设置PATH
+
+	export PATH=/usr/local/bin:$PATH
+
+3.5 确保使用的是新编译的Vim
+	
+	which vim
+
+参考：
+1.http://vim.wikia.com/wiki/Getting_the_Vim_source_with_Mercurial
+2.http://vim.wikia.com/wiki/Building_Vim
+3.vim编译指南(http://users.skynet.be/antoine.mechelynck/vim/compunix.htm#p1)
+4.https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
