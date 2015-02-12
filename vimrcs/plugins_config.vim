@@ -146,6 +146,9 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 " => vim-airline config (force color)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:airline_theme="solarized"
+if !has("gui_running")
+	let g:airline_theme="luna"
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

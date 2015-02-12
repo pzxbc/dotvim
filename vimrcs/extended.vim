@@ -39,9 +39,8 @@ if has("gui_running")
 	colorscheme solarized
 else
 	set background=dark
-    " colorscheme peaksea
-	colorscheme solarized
-	let g:solarized_termcolors=256
+    colorscheme peaksea
+	" colorscheme solarized
     " colorscheme desert
     " let g:colors_name="desert"
 endif
