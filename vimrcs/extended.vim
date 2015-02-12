@@ -41,6 +41,7 @@ else
 	set background=dark
     " colorscheme peaksea
 	colorscheme solarized
+	let g:solarized_termcolors=256
     " colorscheme desert
     " let g:colors_name="desert"
 endif
