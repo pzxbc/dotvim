@@ -1,3 +1,7 @@
+# README
+对原有的已经做过很大的改变，具体使用请参考doc下面的文档
+
+
 # The Ultimate vimrc
 
 Over the last 8 years I have used and tweaked Vim. This is my Ultimate vimrc.

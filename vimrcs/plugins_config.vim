@@ -92,7 +92,7 @@ map <leader>nf :NERDTreeFind<cr>
 " => easytags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:easytags_async=1
-let g:easytags_cmd = 'C:\Users\gzpengzhangxiang\vim_tools_doc\tools\bin\ctags.EXE'
+let g:easytags_cmd = 'C:\Users\gzpengzhangxiang\.vim_runtime\bin\ctags.exe'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easymotion
