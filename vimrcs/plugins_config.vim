@@ -91,8 +91,17 @@ map <leader>nf :NERDTreeFind<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easytags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("win16") || has("win32")
+	set tags=./.tags;,~/_vimtags
+else
+	set tags=./.tags;,~/.vimtags
+endif
+" 在当前文件目录下生成Tags
+" let g:easytags_dynamic_files = 1
 let g:easytags_async=1
 let g:easytags_cmd = 'C:\Users\gzpengzhangxiang\.vim_runtime\bin\ctags.exe'
+" 保存后立刻更新Tags
+let g:easytags_events = ['BufWritePost']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easymotion
