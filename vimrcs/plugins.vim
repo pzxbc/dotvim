@@ -18,7 +18,6 @@ Plugin 'gmarik/Vundle.vim'
 " plugin on GitHub repo
 " Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
-Plugin 'vim-scripts/vim-auto-save'
 Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'tpope/vim-commentary'
@@ -64,8 +63,11 @@ Plugin 'KabbAmine/zeavim.vim'
 " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file:///home/gmarik/path/to/plugin'
 " Plugin 'file:///Users/gzpengzhangxiang/.vim_runtime/bundle/peaksea'
+" 修改了部分颜色，更适配terminal和GUI
 Plugin 'file:///~/.vim_runtime/bundle/peaksea'
 Plugin 'file:///~/.vim_runtime/bundle/mark'
+" 删掉了CompleteDone事件，兼容Vim7.3
+Plugin 'file:///~/.vim_runtime/bundle/vim-auto-save'
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.

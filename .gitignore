@@ -8,3 +8,4 @@ bundle/*
 !bundle/Vundle.vim
 !bundle/peaksea
 !bundle/mark
+!bundle/vim-auto-save
