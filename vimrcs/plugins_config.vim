@@ -41,6 +41,11 @@ let g:ctrlp_clear_cache_on_exit = 0
 nmap <Leader>py :CtrlPYankring<Cr>
 
 """"""""""""""""""""""""""""""
+" => ConqueTerm
+""""""""""""""""""""""""""""""
+let g:ConqueTerm_ToggleKey = '<C-F8>'
+
+""""""""""""""""""""""""""""""
 " => ZenCoding
 """"""""""""""""""""""""""""""
 " Enable all functions in all modes
