@@ -40,8 +40,8 @@
 	参考bin目录下的readme.txt
 4.安装Vim插件
 	启动Vim，执行:VundleInstall
-	(第一次启动会提示找不到solarized主题，安装完插件后重启即可)
-5.修改vimrcs/plugins_config.vim
+	(第一次启动会提示找不到solarized主题，安装完插件后重启Vim即可)
+5.修改vimrcs/plugins_config.vim(easytags默认是不启用的了，如果需要easytags，请在plugins.vim中启用，并参考此步骤)
 	
 	let g:easytags_cmd = 'C:\Users\gzpengzhangxiang\.vim_runtime\bin\ctags.exe'
 	在Windows上请设置为正确的路径，Linux上请注释这条设置
