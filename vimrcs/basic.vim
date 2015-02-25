@@ -403,7 +403,9 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-
+" Can be typed even faster than jj.
+" If you are considering putting this map in your .vimrc be careful to not put any comments after it, imap will try to interpret the blank spaces after <Esc> producing random jumps after entering normal mode.
+:inoremap jk <Esc>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
