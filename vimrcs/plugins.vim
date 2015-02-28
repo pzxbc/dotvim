@@ -44,11 +44,11 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 """""""""""""""""""""""""""""
 " snipmate
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
+" Bundle "MarcWeber/vim-addon-mw-utils"
+" Bundle "tomtom/tlib_vim"
+" Bundle "garbas/vim-snipmate"
 " Optional:
-Bundle "honza/vim-snippets"
+" Bundle "honza/vim-snippets"
 """""""""""""""""""""""""""""
 Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
