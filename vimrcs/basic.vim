@@ -47,7 +47,7 @@
 " :source $MYVIMRC
 
 " Sets how many lines of history VIM has to remember
-set history=700
+set history=200
 
 " Enable filetype plugins
 filetype plugin on
@@ -303,7 +303,8 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
      \ endif
 " Remember info about open buffers on close
-set viminfo^=%
+" use vim session
+" set viminfo^=%
 
 
 """"""""""""""""""""""""""""""
