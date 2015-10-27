@@ -35,8 +35,8 @@ set guioptions-=L
 if has("gui_running")
     set background=dark
 	" set background=light
-    " colorscheme peaksea
-	colorscheme solarized
+    colorscheme peaksea
+	" colorscheme solarized
 else
 	set background=dark
     colorscheme peaksea
