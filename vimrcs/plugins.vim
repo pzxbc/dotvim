@@ -17,6 +17,11 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 " Plugin 'tpope/vim-fugitive'
+" 自动补全引号括号
+" http://www.wklken.me/posts/2015/06/07/vim-plugin-delimitmate.html
+Plugin 'Raimondi/delimitMate'
+" % 在配对标签自动跳转
+Plugin 'vim-scripts/matchit.zip'
 Plugin 'pzxbc/vim-kv'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mileszs/ack.vim'
