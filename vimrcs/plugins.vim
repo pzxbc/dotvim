@@ -16,6 +16,8 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
+" vim instant markdown
+Plugin 'isnowfy/python-vim-instant-markdown'
 " Produce increasing/decreasing columns of numbers, dates, or daynames
 Plugin 'vim-scripts/VisIncr'
 " Plugin 'tpope/vim-fugitive'
