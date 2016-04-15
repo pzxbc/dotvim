@@ -4,7 +4,7 @@
 动已经很大了，插件管理方式等都更改了，需要手动合并[Ultimate vimrc](https://github.com/amix/vimrc)
 的更新。
 
-配置需要`Vim`包含python特性，另外`Vim`的版本需要>7.3
+配置对`Vim`的要求：+Python && version > 7.3
 
 ## 安装
 
