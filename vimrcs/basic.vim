@@ -70,7 +70,7 @@ let g:mapleader = ","
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 if has("unix")
-	command W w !sudo tee % > /dev/null
+    command! W w !sudo tee % > /dev/null
 endif
 
 
@@ -143,24 +143,13 @@ set foldcolumn=1
 " Enable syntax highlighting
 syntax enable
 
-try
-    colorscheme desert
-catch
-endtry
-
 " 终端和GUI下都使用256色
 set t_Co=256
 set background=dark
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    " set guioptions-=m
-    " set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
+try
+    colorscheme molokai
+catch
+endtry
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
