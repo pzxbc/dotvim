@@ -1,25 +1,13 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Important: 
+" Important:
 "       This requries that you install https://github.com/amix/vimrc !
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""
-" => bufExplorer plugin
+" => molokai
 """"""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=1
-let g:bufExplorerShowRelativePath=0
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='mru'
-
-""""""""""""""""""""""""""""""
-" => YankRing
-""""""""""""""""""""""""""""""
-"if has("win16") || has("win32")
-"    " Don't do anything
-"else
-"    let g:yankring_history_dir = '~/.vim_runtime/temp_dirs/'
-"endif
+let g:molokai_original = 1
 
 """"""""""""""""""""""""""""""
 " => CTRL-P
@@ -30,34 +18,80 @@ let g:ctrlp_map = '<c-p>'
 map <leader>cp :CtrlP<cr>
 map <c-b> :CtrlPBuffer<cr>
 
-let g:ctrlp_max_height = 20
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
- 
+let g:ctrlp_max_height = 40
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
+
 let g:ctrlp_clear_cache_on_exit = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Nerd Tree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDTreeWinSize = 20
+map <leader>nt :NERDTreeToggle<cr>
+map <leader>nb :NERDTreeFromBookmark
+map <leader>nf :NERDTreeFind<cr>
+" open a NERDTree automatically when vim starts up if no files were specified
+"autocmd vimenter * if !argc() | NERDTree | endif
+
+""""""""""""""""""""""""""""""
+" => bufExplorer plugin
+""""""""""""""""""""""""""""""
+let g:bufExplorerDefaultHelp=1
+let g:bufExplorerShowRelativePath=0
+let g:bufExplorerFindActive=1
+let g:bufExplorerSortBy='mru'
+
+""""""""""""""""""""""""""""""
+" => neocomplete
+""""""""""""""""""""""""""""""
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+""""""""""""""""""""""""""""""
+" => YankRing
+""""""""""""""""""""""""""""""
+"if has("win16") || has("win32")
+"    " Don't do anything
+"else
+"    let g:yankring_history_dir = '~/.vim_runtime/temp_dirs/'
+"endif
+
 
 """"""""""""""""""""""""""""""
 " => ctrlp-extensions
 """"""""""""""""""""""""""""""
 nmap <Leader>py :CtrlPYankring<Cr>
-
-""""""""""""""""""""""""""""""
-" => ConqueTerm
-""""""""""""""""""""""""""""""
-let g:ConqueTerm_ToggleKey = '<C-F8>'
-
-""""""""""""""""""""""""""""""
-" => ZenCoding
-""""""""""""""""""""""""""""""
-" Enable all functions in all modes
-let g:user_zen_mode='a'
-
-
-""""""""""""""""""""""""""""""
-" => snipMate (beside <TAB> support <CTRL-j>)
-""""""""""""""""""""""""""""""
-"ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
-"snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
-
 
 """"""""""""""""""""""""""""""
 " => Vim grep
@@ -75,38 +109,6 @@ let g:ctrlsf_ackprg = 'ack'
 """"""""""""""""""""""""""""""
 nmap <leader>mt ::MaximizerToggle<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Nerd Tree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDTreeWinSize = 20
-map <leader>nt :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark 
-map <leader>nf :NERDTreeFind<cr>
-" open a NERDTree automatically when vim starts up if no files were specified
-"autocmd vimenter * if !argc() | NERDTree | endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => taglist
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nnoremap <silent> <F8> :TlistToggle<CR>
-" let g:Tlist_Show_One_File=1
-" let g:Tlist_Exit_OnlyWindow=1
-" let g:Tlist_Use_Right_Window=1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => easytags
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("win16") || has("win32")
-	set tags=./.tags;,~/_vimtags
-else
-	set tags=./.tags;,~/.vimtags
-endif
-" 在当前文件目录下生成Tags
-" let g:easytags_dynamic_files = 1
-let g:easytags_async=1
-let g:easytags_cmd = 'C:\Users\gzpengzhangxiang\.vim_runtime\bin\ctags.exe'
-" 保存后立刻更新Tags
-let g:easytags_events = ['BufWritePost']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easymotion
@@ -162,7 +164,7 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:airline_theme="solarized"
 if !has("gui_running")
-	let g:airline_theme="luna"
+    let g:airline_theme="luna"
 endif
 
 
@@ -229,18 +231,3 @@ map <Leader>a:  :Tabularize /:<CR>
 " nmap <Leader>a|  :Tabularize /|<CR>
 " map <Leader>a|  :Tabularize /|<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => neocomplcache.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:neocomplcache_enable_at_startup = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => zeal.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('win32') || has('win64')
-    let g:zv_zeal_directory = "D:\\Program Files (x86)\\zeal\\zeal.exe"
-else
-    let g:zv_zeal_directory = "/usr/bin/zeal"
-endif
-nmap <unique> <Leader>zd  <Plug>Zeavim
-vmap <unique> <Leader>zd  <Plug>ZVVisSelection
