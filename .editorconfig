@@ -27,3 +27,7 @@ indent_style = tab
 [{package.json,.travis.yml}]
 indent_style = space
 indent_size = 2
+
+# for max line length for code
+# [*.py]
+# max_line_length = 76
