@@ -13,8 +13,6 @@ call vundle#begin('~/.vim_runtime/bundle')
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Todo: 插件分类
-" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
 " UI 颜色
@@ -79,6 +77,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 
+" The following are examples of different formats supported.
+"
 " plugin on GitHub repo
 " Plugin 'pzxbc/vim-kv'
 " Plugin 'terryma/vim-expand-region'
