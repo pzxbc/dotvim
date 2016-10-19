@@ -60,3 +60,14 @@ Todo
 非正常退出`Vim`时，session还会处于lock状态，下次进入`Vim`时不能打开被lock的
 session。进入目录`~/.vim/session/`，删除对应session的lock文件即可。
 
+## vim配置调试
+
+1\. [查看变量在哪里设置](http://vim.wikia.com/wiki/Debug_unexpected_option_settings)
+```
+:verbose set tabstop?
+```
+
+2\. 查看配置文件执行顺序
+```
+:scriptnames
+```
