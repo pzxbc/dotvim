@@ -29,6 +29,7 @@ Plugin 'tomasr/molokai'
 " Plugin 'Yggdroot/indentLine'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-airline'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 " 文件操作相关
 "
@@ -76,6 +77,9 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
+" vue component highlight
+Plugin 'othree/html5.vim'
+Plugin 'posva/vim-vue'
 
 " The following are examples of different formats supported.
 "
