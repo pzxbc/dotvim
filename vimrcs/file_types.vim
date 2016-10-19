@@ -8,6 +8,9 @@ au BufNewFile,BufRead *.jinja set syntax=htmljinja
 au BufNewFile,BufRead *.mako set ft=mako
 
 au Filetype python setlocal tabstop=4
+" au FileType python set listchars=tab:>-
+au BufEnter *.py set listchars=tab:>-
+au BufEnter *.py set list
 
 au FileType python map <buffer> F :set foldmethod=indent<cr>
 
