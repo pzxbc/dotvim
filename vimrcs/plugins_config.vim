@@ -174,6 +174,8 @@ endif
 " => Syntastic (syntax checker)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_python_checkers=['pyflakes']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javaScript_eslint=1
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
