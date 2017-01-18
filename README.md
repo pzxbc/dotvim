@@ -71,3 +71,6 @@ session。进入目录`~/.vim/session/`，删除对应session的lock文件即可
 ```
 :scriptnames
 ```
+
+3\. 调试
+http://inlehmansterms.net/2014/10/31/debugging-vim/
