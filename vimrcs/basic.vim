@@ -179,8 +179,8 @@ set noswapfile
 " http://vim.wikia.com/wiki/Converting_tabs_to_spaces
 " http://vim.wikia.com/wiki/Indenting_source_code
 " Use spaces instead of tabs
-set expandtab
-" set noexpandtab
+" set expandtab
+set noexpandtab
 
 " Be smart when using tabs ;)
 set smarttab
@@ -188,7 +188,7 @@ set smarttab
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
-set softtabstop=4
+" set softtabstop=4
 
 " Linebreak on 500 characters
 set lbr
