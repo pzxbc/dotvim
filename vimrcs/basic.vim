@@ -182,6 +182,9 @@ set noswapfile
 " set expandtab
 set noexpandtab
 
+" disable vim python plugin files setting
+let g:python_recommended_style = 0
+
 " Be smart when using tabs ;)
 set smarttab
 
