@@ -73,6 +73,7 @@ Plugin 'file:///~/.vim_runtime/bundle/mark'
 "
 " 代码提示
 " Plugin 'Shougo/neocomplete.vim'
+Plugin 'maralla/completor.vim'
 " vim中使用git
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'

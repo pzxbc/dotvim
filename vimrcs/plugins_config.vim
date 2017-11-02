@@ -172,6 +172,15 @@ endif
 " let g:airline#extensions#ale#enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => completor(异步补全插件)
+" 后续建议关注language server protocol
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 使用tab选择
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ale (Asynchronous Lint Engine)
 " https://github.com/w0rp/ale
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
