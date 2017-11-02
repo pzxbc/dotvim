@@ -72,11 +72,12 @@ Plugin 'file:///~/.vim_runtime/bundle/mark'
 " Plugin 'elzr/vim-json'
 "
 " 代码提示
-Plugin 'Shougo/neocomplete.vim'
+" Plugin 'Shougo/neocomplete.vim'
 " vim中使用git
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/syntastic'
+" 使用vim8新插件ale，支持异步语法检测
+Plugin 'w0rp/ale'
 " vue component highlight
 Plugin 'othree/html5.vim'
 Plugin 'posva/vim-vue'

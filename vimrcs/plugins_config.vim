@@ -47,38 +47,38 @@ let g:bufExplorerSortBy='mru'
 """"""""""""""""""""""""""""""
 " => neocomplete
 """"""""""""""""""""""""""""""
-" Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+" " Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" " Disable AutoComplPop.
+" let g:acp_enableAtStartup = 0
+" " Use neocomplete.
+" let g:neocomplete#enable_at_startup = 1
+" " Use smartcase.
+" let g:neocomplete#enable_smart_case = 1
+" " Set minimum syntax keyword length.
+" let g:neocomplete#sources#syntax#min_keyword_length = 3
 
-set completeopt-=preview
+" set completeopt-=preview
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" " Recommended key-mappings.
+" " <CR>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+"   return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+"   " For no inserting <CR> key.
+"   "return pumvisible() ? "\<C-y>" : "\<CR>"
+" endfunction
+" " <TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" " <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" " Enable omni completion.
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 """"""""""""""""""""""""""""""
 " => YankRing
@@ -168,24 +168,35 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 if !has("gui_running")
     let g:airline_theme="luna"
 endif
-
+" 默认是开启的
+" let g:airline#extensions#ale#enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic (syntax checker)
+" => ale (Asynchronous Lint Engine)
+" https://github.com/w0rp/ale
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_python_checkers=['pyflakes']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javaScript_eslint=1
+" :help ale-options for global options
+" : help ale-linter-options for options specified to particular linters
+" 指定使用的检查器
+let g:ale_linters = {  
+\   'python': ['flake8'],
+\}
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" 忽略缩进警告
+" let g:ale_python_flake8_options = '--ignore=W191'
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" 格式化
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'json': ['prettier'],
+\   'css': ['prettier'],
+\}
+let g:ale_fix_on_save = 1
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
+" let g:ale_javascript_prettier_use_local_config = 1
+" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-auto-save

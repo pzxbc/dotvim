@@ -4,15 +4,19 @@
 动已经很大了，插件管理方式等都更改了，需要手动合并[Ultimate vimrc](https://github.com/amix/vimrc)
 的更新。
 
-配置对`Vim`的要求：+Python && version > 7.3
+配置对`Vim`的要求：+Python +lua version >= 8.0
 
 ## 安装
 
-### 类Debian系统
+### Debian系统
 安装`Vim`。`vim-nox`版本是增加了脚本支持版本，包括python、lua等脚本的支持。
 ``` bash
 sudo apt-get install vim-nox
 ```
+
+### MacOS
+```bash
+brew install vim --with-lua
 
 克隆配置代码到本地
 ``` bash
@@ -25,6 +29,8 @@ sudo apt-get install ack
 sudo apt-get install ctags
 ```
 
+语法检查需要第三方工具支持，具体安装指导请看`doc/语法检查配置.md`
+  
 进入`~/.vim_runtime`目录，执行
 ``` bash
 ./install_awesome_vimrc.sh
