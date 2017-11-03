@@ -29,7 +29,9 @@ sudo apt-get install ack
 sudo apt-get install ctags
 ```
 
-语法检查需要第三方工具支持，具体安装指导请看`doc/语法检查配置.md`
+* 语法检查: `doc/语法检查配置.md`
+* 自动补全: doc/自动补全.md
+
   
 进入`~/.vim_runtime`目录，执行
 ``` bash
