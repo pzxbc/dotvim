@@ -175,6 +175,8 @@ endif
 " => completor(异步补全插件)
 " 后续建议关注language server protocol
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 关闭预览界面
+set completeopt-=preview
 " 使用tab选择
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
