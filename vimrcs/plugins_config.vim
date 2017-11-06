@@ -9,6 +9,13 @@
 """"""""""""""""""""""""""""""
 let g:molokai_original = 1
 
+
+""""""""""""""""""""""""""""""
+" => editorconfig
+""""""""""""""""""""""""""""""
+" work with fugitive
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
 """"""""""""""""""""""""""""""
 " => CTRL-P
 """"""""""""""""""""""""""""""

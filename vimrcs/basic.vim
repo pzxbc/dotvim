@@ -161,8 +161,8 @@ set noswapfile
 " http://vim.wikia.com/wiki/Converting_tabs_to_spaces
 " http://vim.wikia.com/wiki/Indenting_source_code
 " Use spaces instead of tabs
-" set expandtab
-set noexpandtab
+set expandtab
+" set noexpandtab
 
 " disable vim python plugin files setting
 let g:python_recommended_style = 0
