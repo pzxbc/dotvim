@@ -73,9 +73,14 @@ brew install vim --with-lua
   ```bash
   # Python语法检查
   sudo pip install flake8
+  # Python 自动补全
+  sudo pip install jedi
   # Lua语法检查
   brew install lua --with-completion
   luarocks install luacheck
+
+  # 快速查找
+  brew install ack
 
   ```
 
