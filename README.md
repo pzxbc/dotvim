@@ -1,29 +1,98 @@
 # README
 
-基于[Ultimate vimrc](https://github.com/amix/vimrc)的自定义`Vim`配置文件，改
-动已经很大了，插件管理方式等都更改了，需要手动合并[Ultimate vimrc](https://github.com/amix/vimrc)
-的更新。
+`Vim`配置要求：
 
-配置对`Vim`的要求：+Python +lua version >= 8.0
+* version >= 8.0
+* +Python
+* +termguicolors
+* +conceal
 
-## 安装
+## Vim安装
 
-### Debian系统
-安装`Vim`。`vim-nox`版本是增加了脚本支持版本，包括python、lua等脚本的支持。
-``` bash
-sudo apt-get install vim-nox
+### Windows
+
+https://github.com/vim/vim-win32-installer/releases
+
+另外需要安装Python
+
+### Debian
+
+`apt-get`暂时还不能安装`vim8.0`版本，需要手动编译安装
+
+```bash
+sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
+    libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
+    libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
+    python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git
+sudo apt-get remove vim vim-runtime gvim
+sudo apt-get remove vim-tiny vim-common vim-gui-common vim-nox
+wget https://github.com/vim/vim/archive/master.zip
+unzip master.zip
+cd vim-master
+./configure --with-features=huge \
+            --enable-multibyte \
+            --enable-rubyinterp=yes \
+            --enable-pythoninterp=yes \
+            --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
+            --enable-perlinterp=yes \
+            --enable-luainterp=yes \
+            --enable-gui=gtk2 \
+            --enable-cscope
+make VIMRUNTIMEDIR=/usr/local/share/vim/vim80
+sudo apt-get install checkinstall
+sudo checkinstall
+
+sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
+sudo update-alternatives --set editor /usr/local/bin/vim
+sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
+sudo update-alternatives --set vi /usr/local/bin/vim
 ```
 
 ### MacOS
 ```bash
 brew install vim --with-lua
-
-克隆配置代码到本地
-``` bash
-git clone https://github.com/pzxbc/dotvim.git ~/.vim_runtime
 ```
 
+##Vim配置
+
+* 克隆配置文件
+
+  ```bash
+  git clone https://github.com/pzxbc/dotvim.git ~/.vim_runtime
+  cd ~/.vim_runtime
+  # mac & unix
+  ./install_awesome_vimrc.sh
+  # windows
+  ./install_awesome_vimrc.ps1
+  ```
+
+* 安装第三方工具
+
+  **MacOS**
+
+  ```bash
+  # Python语法检查
+  sudo pip install flake8
+  # Lua语法检查
+  brew install lua --with-completion
+  luarocks install luacheck
+
+  ```
+
+  **Windows**
+
+  **Debian**
+
+#### 语法检查
+
+#### 自动补全
+
+
+
+
+
 安装需要的第三方工具
+
 ``` bash
 sudo apt-get install ack
 sudo apt-get install ctags
@@ -32,7 +101,7 @@ sudo apt-get install ctags
 * 语法检查: `doc/语法检查配置.md`
 * 自动补全: doc/自动补全.md
 
-  
+
 进入`~/.vim_runtime`目录，执行
 ``` bash
 ./install_awesome_vimrc.sh
