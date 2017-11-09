@@ -12,12 +12,16 @@ call plug#begin('~/.vim_runtime/bundle')
 " Plugin 'fugalh/desert.vim'
 " 终端下不能正常显示
 " Plugin 'altercation/vim-colors-solarized'
-Plug 'tomasr/molokai'
+" Plug 'tomasr/molokai'
+Plug 'lifepillar/vim-solarized8'
 
 " 布局
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
+
+" vim操作
+Plug 'lifepillar/vim-cheat40'
 
 " 文件操作相关
 "
@@ -26,7 +30,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+" Plug 'xolox/vim-session'
 
 " 编辑相关
 "
@@ -42,14 +46,15 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 " 删掉了CompleteDone事件，兼容Vim7.3
-Plug '~/.vim_runtime/bundle/vim-auto-save'
+" Plug '~/.vim_runtime/bundle/vim-auto-save'
+Plug '907th/vim-auto-save'
 
 " 查找/移动/标记
 "
 " % 在配对标签自动跳转
 Plug 'vim-scripts/matchit.zip'
 Plug 'mileszs/ack.vim'
-Plug '~/.vim_runtime/bundle/mark'
+" Plug '~/.vim_runtime/bundle/mark'
 
 " 程序开发相关
 "

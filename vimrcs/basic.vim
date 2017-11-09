@@ -25,11 +25,15 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vimscript learning: http://learnvimscriptthehardway.stevelosh.com/
 " reload vimrc
 " :source $MYVIMRC
 
 " Sets how many lines of history VIM has to remember
 set history=200
+
+"show the line number
+set number
 
 " Enable filetype plugins
 filetype plugin on
@@ -126,12 +130,30 @@ set foldcolumn=1
 syntax enable
 
 " 终端和GUI下都使用256色
-set t_Co=256
-set background=dark
+" set t_Co=256
+" 设置truecolor
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 try
-    colorscheme molokai
+    " colorscheme molokai
+    set background=dark
+    colorscheme solarized8_dark_flat
 catch
 endtry
+" light和dark切换
+nnoremap  <leader>B :<c-u>exe "colors" (g:colors_name =~# "dark"
+    \ ? substitute(g:colors_name, 'dark', 'light', '')
+    \ : substitute(g:colors_name, 'light', 'dark', '')
+    \ )<cr>
+
+fun! Solarized8Contrast(delta)
+  let l:schemes = map(["_low", "_flat", "", "_high"], '"solarized8_".(&background).v:val')
+  exe "colors" l:schemes[((a:delta+index(l:schemes, g:colors_name)) % 4 + 4) % 4]
+endf
+
+nmap <leader>c- :<c-u>call Solarized8Contrast(-v:count1)<cr>
+nmap <leader>c+ :<c-u>call Solarized8Contrast(+v:count1)<cr>
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -296,6 +318,9 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" map jk to <esc>
+inoremap jk <esc>
+
 " Remap VIM 0 to first non-blank character
 map 0 ^
 

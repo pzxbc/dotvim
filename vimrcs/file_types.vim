@@ -8,7 +8,7 @@
 "au BufNewFile,BufRead *.mako set ft=mako
 
 "au Filetype python setlocal tabstop=4
-"" au FileType python set listchars=tab:>-
+"wraw" au FileType python set listchars=tab:>-
 "au BufEnter *.py set listchars=tab:>-
 "au BufEnter *.py set list
 

@@ -172,9 +172,9 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 " => vim-airline config (force color)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:airline_theme="solarized"
-if !has("gui_running")
-    let g:airline_theme="luna"
-endif
+" if !has("gui_running")
+"     let g:airline_theme="luna"
+" endif
 " 默认是开启的
 " let g:airline#extensions#ale#enabled = 1
 
@@ -220,6 +220,7 @@ let g:ale_fix_on_save = 1
 " => vim-auto-save
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:auto_save=1  " enable AutoSave on Vim startup
+let g:auto_save_silent = 1
 " let g:auto_save_in_insert_mode = 0  " do not save while in insert mode in vim7.3 completeDone required vim7.4
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

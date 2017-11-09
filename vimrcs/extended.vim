@@ -1,11 +1,4 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Important:
-"       This requries that you install https://github.com/amix/vimrc !
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GUI related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set font according to system
@@ -37,11 +30,11 @@ if has("gui_running")
     " set background=light
     " colorscheme peaksea
     " colorscheme solarized
-    set guioptions-=T
-    set guioptions-=e
+    " set guioptions-=T
+    " set guioptions-=e
     " set guioptions-=m
     " set t_Co=256
-    set guitablabel=%M\ %t
+    " set guitablabel=%M\ %t
 else
     " set background=dark
     " colorscheme peaksea
@@ -54,8 +47,11 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>e :e! ~/.vim_runtime/my_configs.vim<cr>
-autocmd! bufwritepost vimrc source ~/.vim_runtime/my_configs.vim
+map <leader>e :e! ~/.vim_runtime/vimrcs/basic.vim<cr>
+" autocmd! bufwritepost vimrc source ~/.vim_runtime/my_configs.vim
+" fast edit and reload vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
