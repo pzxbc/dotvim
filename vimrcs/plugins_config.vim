@@ -196,14 +196,14 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 " :help ale-options for global options
 " : help ale-linter-options for options specified to particular linters
 " 指定使用的检查器
-let g:ale_linters = {  
+let g:ale_linters = {
 \   'python': ['flake8'],
 \}
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " 忽略缩进警告
-" let g:ale_python_flake8_options = '--ignore=W191'
+let g:ale_python_flake8_options = '--ignore=W191,E501,E265,F401'
 
 " 格式化
 let g:ale_fixers = {
