@@ -30,9 +30,9 @@ if has("gui_running")
     " set background=light
     " colorscheme peaksea
     " colorscheme solarized
-    " set guioptions-=T
-    " set guioptions-=e
-    " set guioptions-=m
+    set guioptions-=T
+    set guioptions-=e
+    set guioptions-=m
     " set t_Co=256
     " set guitablabel=%M\ %t
 else
