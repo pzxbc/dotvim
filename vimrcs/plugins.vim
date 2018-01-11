@@ -54,7 +54,7 @@ Plug '907th/vim-auto-save'
 " % 在配对标签自动跳转
 Plug 'vim-scripts/matchit.zip'
 Plug 'mileszs/ack.vim'
-" Plug '~/.vim_runtime/bundle/mark'
+Plug '~/.vim_runtime/bundle/mark'
 
 " 程序开发相关
 "
