@@ -112,7 +112,7 @@ sudo apt-get install ctags
 ./install_awesome_vimrc.sh
 ```
 
-打开`Vim`，执行`:VundleInstall`命令安装插件，然后重启`Vim`就安装完毕了。
+打开`Vim`，执行`:PlugInstall`命令安装插件，然后重启`Vim`就安装完毕了。
 
 ### 其他系统安装
 
