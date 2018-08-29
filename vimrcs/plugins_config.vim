@@ -36,12 +36,16 @@ let g:ctrlp_clear_cache_on_exit = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDTreeWinSize = 20
+" let g:NERDTreeWinSize = 20
 map <leader>nt :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
-map <leader>nf :NERDTreeFind<cr>
-" open a NERDTree automatically when vim starts up if no files were specified
-"autocmd vimenter * if !argc() | NERDTree | endif
+map <leader>ns :NERDTreeFind<cr>
+map <leader>nf :NERDTreeFocus<cr>
+" open NERDTree automatically when vim starts up on opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" " nerdtree过滤文件显示
+" let NERDTreeIgnore=['\.con$', '\~$']
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -50,6 +54,11 @@ let g:bufExplorerDefaultHelp=1
 let g:bufExplorerShowRelativePath=0
 let g:bufExplorerFindActive=1
 let g:bufExplorerSortBy='mru'
+
+""""""""""""""""""""""""""""""
+" => fzf
+""""""""""""""""""""""""""""""
+nnoremap <expr> <c-p> ':FZF '.projectroot#guess().'/<CR>'
 
 """"""""""""""""""""""""""""""
 " => neocomplete
@@ -188,6 +197,7 @@ set completeopt-=preview
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+" let g:completor_clang_binary = '/usr/local/bin/clang'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ale (Asynchronous Lint Engine)
@@ -196,25 +206,106 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 " :help ale-options for global options
 " : help ale-linter-options for options specified to particular linters
 " 指定使用的检查器
-let g:ale_linters = {
-\   'python': ['flake8'],
-\}
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-" 忽略缩进警告
-let g:ale_python_flake8_options = '--ignore=W191,E501,E265,F401'
+" let g:ale_linters = {
+" \   'python': ['flake8'],
+" \}
+" let g:ale_echo_msg_error_str = 'E'
+" let g:ale_echo_msg_warning_str = 'W'
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" " 忽略缩进警告
+" let g:ale_python_flake8_options = '--ignore=W191,E501,E265,F401'
 
-" 格式化
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'json': ['prettier'],
-\   'css': ['prettier'],
-\}
-let g:ale_fix_on_save = 1
+" " 格式化
+" let g:ale_fixers = {
+" \   'javascript': ['prettier'],
+" \   'json': ['prettier'],
+" \   'css': ['prettier'],
+" \}
+" let g:ale_fix_on_save = 1
+" let g:ale_completion_enabled = 1
 
 " let g:ale_javascript_prettier_use_local_config = 1
 " let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+" c++ lint只使用这两个lint就好了，他们可以使用compile_commands.json文件
+" CMake生成compile_commands.json文件
+" mkdir build
+" cd build
+" cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+" ln -s build/compile_commands.json compile_commands.json
+let g:ale_linters = {
+\   'cpp': ['clangcheck', 'clangtidy'],
+\}
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => asyncomplete.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => LanguageClient-neovim.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:LanguageClient_serverCommands = {
+\ 'cpp': ['/usr/local/bin/cquery',
+\ '--log-file=/home/pzx/.cache/cquery/cq.log',
+\ '--init={"cacheDirectory":"/home/pzx/.cache/cquery"}']
+\ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => asyncomplete.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+" " imap <c-space> <Plug>(asyncomplete_force_refresh)
+" let g:asyncomplete_remove_duplicates = 1
+" " let g:asyncomplete_smart_completion = 1
+" let g:asyncomplete_auto_popup = 1
+" " set completeopt+=preview
+" " autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" let g:lsp_log_file='/home/pzx/.vim_runtime/temp_dirs/lsp.log'
+" if executable('cquery')
+"    au User lsp_setup call lsp#register_server({
+"       \ 'name': 'cquery',
+"       \ 'cmd': {server_info->['cquery']},
+"       \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+"       \ 'initialization_options': { 'cacheDirectory': '/home/pzx/.cache/cquery' },
+"       \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+"       \ })
+" endif
+" call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+"     \ 'name': 'buffer',
+"     \ 'whitelist': ['*'],
+"     \ 'blacklist': ['go'],
+"     \ 'completor': function('asyncomplete#sources#buffer#completor'),
+"     \ }))
+" call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+"     \ 'name': 'file',
+"     \ 'whitelist': ['*'],
+"     \ 'priority': 10,
+"     \ 'completor': function('asyncomplete#sources#file#completor')
+"     \ }))
+" let g:tmuxcomplete#asyncomplete_source_options = {
+"             \ 'name':      'tmuxcomplete',
+"             \ 'whitelist': ['*'],
+"             \ 'config': {
+"             \     'splitmode':      'words',
+"             \     'filter_prefix':   1,
+"             \     'show_incomplete': 1,
+"             \     'sort_candidates': 0,
+"             \     'scrollback':      0,
+"             \     'truncate':        0
+"             \     }
+"             \ }
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-auto-save
@@ -244,11 +335,6 @@ nnoremap <silent> <leader>rp <Esc>:RainbowParenthesesToggle<cr>
 \:RainbowParenthesesLoadBraces<cr>
 \:RainbowParenthesesLoadChevrons<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Transparency windows
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 如果不想要透明就取消下面的注释
-let g:loaded_transparency_windows_vim=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => tabular
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
