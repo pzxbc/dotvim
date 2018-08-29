@@ -64,10 +64,13 @@ endif
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
+" http://vim.wikia.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen
 set so=7
 
 " Turn on the WiLd menu
+" http://vim.wikia.com/wiki/Great_wildmode/wildmenu_and_console_mouse
 set wildmenu
+set wildmode=list:longest,full
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
