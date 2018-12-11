@@ -1,0 +1,9 @@
+" 分项目配置
+"
+
+" NerdTree目录过滤
+" let NERDTreeIgnore=['\.con$', '\~$']
+
+" Python deoplete-jedi project config
+" Python库路径
+" let g:deoplete#sources#jedi#extra_path = []
