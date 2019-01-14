@@ -5,9 +5,9 @@ source ~/.vim_runtime/vimrcs/extended.vim
 source ~/.vim_runtime/vimrcs/file_types.vim
 source ~/.vim_runtime/vimrcs/plugins_config.vim
 
-" try
-" source ~/.vim_runtime/my_configs.vim
-" catch
-" endtry
+try
+source ~/.vim_runtime/my_configs.vim
+catch
+endtry
 
 
