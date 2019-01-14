@@ -156,3 +156,13 @@ session。进入目录`~/.vim/session/`，删除对应session的lock文件即可
 
 3\. 调试
 http://inlehmansterms.net/2014/10/31/debugging-vim/
+
+
+## vim to neovim
+
+主题颜色使用了真彩色
+truecolor putty 最新版
+
+plugin的改变
+
+neovim python 路径
