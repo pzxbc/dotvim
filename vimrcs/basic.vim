@@ -12,7 +12,6 @@
 "    -> Text, tab and indent related
 "    -> Visual mode related
 "    -> Moving around, tabs and buffers
-"    -> Status line
 "    -> Editing mappings
 "    -> vimgrep searching and cope displaying
 "    -> Spell checking
@@ -59,6 +58,7 @@ if has("unix")
     command! W w !sudo tee % > /dev/null
 endif
 
+set clipboard^=unnamed
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -74,11 +74,7 @@ set wildmode=list:longest,full
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-else
-    set wildignore+=.git\*,.hg\*,.svn\*
-endif
+set wildignore+=.git,.snv,.hg,.DS_Store
 
 "Always show current position
 set ruler
@@ -90,6 +86,7 @@ set cmdheight=2
 set hid
 
 " Configure backspace so it acts as it should act
+" http://vim.wikia.com/wiki/Backspace_and_delete_problems
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
@@ -133,15 +130,16 @@ set foldcolumn=1
 syntax enable
 
 " 终端和GUI下都使用256色
-" set t_Co=256
 " 设置truecolor
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" set t_ut=
 try
     " colorscheme molokai
     set background=dark
-    colorscheme solarized8_dark_flat
+    " colorscheme solarized8_dark_flat
+    colorscheme palenight
 catch
 endtry
 " light和dark切换
@@ -190,7 +188,8 @@ set expandtab
 " set noexpandtab
 
 " disable vim python plugin files setting
-let g:python_recommended_style = 0
+" let g:python_recommended_style = 0
+" 使用了polyglot插件
 
 " Be smart when using tabs ;)
 set smarttab
@@ -308,36 +307,29 @@ autocmd BufReadPost *
 " set viminfo^=%
 
 
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map jk to <esc>
-inoremap jk <esc>
-
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+" 注意tmux中的配置
+" 需要添加
+" set -g escape-time 10
+" # Or for tmux >= 2.6
+" set -sg escape-time 10
+" 不然esc转化为了alt键。。。 8-bit clean mode
+nmap <A-j> mz:m+<cr>`z
+nmap <A-k> mz:m-2<cr>`z
+vmap <A-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <A-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
+  nmap <D-j> <A-j>
+  nmap <D-k> <A-k>
+  vmap <D-j> <A-j>
+  vmap <D-k> <A-k>
 endif
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
@@ -350,34 +342,34 @@ endfunc
 " autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ack searching and cope displaying
-"    requires ack.vim - it's much better than vimgrep/grep
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press gv you Ack after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => Ack searching and cope displaying
+""    requires ack.vim - it's much better than vimgrep/grep
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" When you press gv you Ack after the selected text
+"vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
-" Open Ack and put the cursor in the right position
-map <leader>g :Ack
+"" Open Ack and put the cursor in the right position
+"map <leader>g :Ack
 
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+"" When you press <leader>r you can search and replace the selected text
+"vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with Ack, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+"" Do :help cope if you are unsure what cope is. It's super useful!
+""
+"" When you search with Ack, display your results in cope by doing:
+""   <leader>cc
+""
+"" To go to the next search result do:
+""   <leader>n
+""
+"" To go to the previous search results do:
+""   <leader>p
+""
+"map <leader>cc :botright cope<cr>
+"map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+"map <leader>n :cn<cr>
+"map <leader>p :cp<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

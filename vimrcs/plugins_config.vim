@@ -59,6 +59,8 @@ let g:bufExplorerSortBy='mru'
 " => fzf
 """"""""""""""""""""""""""""""
 nnoremap <expr> <c-p> ':FZF '.projectroot#guess().'/<CR>'
+nnoremap <leader>g :ProjectRootExe Ag<space>
+
 
 """"""""""""""""""""""""""""""
 " => neocomplete
@@ -106,21 +108,21 @@ nnoremap <expr> <c-p> ':FZF '.projectroot#guess().'/<CR>'
 "endif
 
 
-""""""""""""""""""""""""""""""
-" => ctrlp-extensions
-""""""""""""""""""""""""""""""
-nmap <Leader>py :CtrlPYankring<Cr>
+"""""""""""""""""""""""""""""""
+"" => ctrlp-extensions
+"""""""""""""""""""""""""""""""
+"nmap <Leader>py :CtrlPYankring<Cr>
 
-""""""""""""""""""""""""""""""
-" => Vim grep
-""""""""""""""""""""""""""""""
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
-set grepprg=/bin/grep\ -nH
+"""""""""""""""""""""""""""""""
+"" => Vim grep
+"""""""""""""""""""""""""""""""
+"let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
+"set grepprg=/bin/grep\ -nH
 
-""""""""""""""""""""""""""""""
-" => Ctrlsf
-""""""""""""""""""""""""""""""
-let g:ctrlsf_ackprg = 'ack'
+"""""""""""""""""""""""""""""""
+"" => Ctrlsf
+"""""""""""""""""""""""""""""""
+"let g:ctrlsf_ackprg = 'ack'
 
 """"""""""""""""""""""""""""""
 " => vim-maximizer
@@ -160,8 +162,6 @@ map <Leader>k <Plug>(easymotion-k)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => tagbar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <F8> :TagbarToggle<CR>
-map <Leader>tb :TagbarOpen fj<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-multiple-cursors
@@ -176,28 +176,6 @@ let g:multi_cursor_next_key="\<C-s>"
 vmap Si S(i_<esc>f)
 au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-airline config (force color)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:airline_theme="solarized"
-" if !has("gui_running")
-"     let g:airline_theme="luna"
-" endif
-" 默认是开启的
-" let g:airline#extensions#ale#enabled = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => completor(异步补全插件)
-" 后续建议关注language server protocol
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 关闭预览界面
-set completeopt-=preview
-" 使用tab选择
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
-" let g:completor_clang_binary = '/usr/local/bin/clang'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ale (Asynchronous Lint Engine)
@@ -226,33 +204,23 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 
 " let g:ale_javascript_prettier_use_local_config = 1
 " let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
-" c++ lint只使用这两个lint就好了，他们可以使用compile_commands.json文件
-" CMake生成compile_commands.json文件
-" mkdir build
-" cd build
-" cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
-" ln -s build/compile_commands.json compile_commands.json
-let g:ale_linters = {
-\   'cpp': ['clangcheck', 'clangtidy'],
-\}
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => asyncomplete.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LanguageClient-neovim.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set hidden
+" let g:LanguageClient_serverCommands = {
+" \ 'cpp': ['/usr/local/bin/cquery',
+" \ '--log-file=/home/pzx/.cache/cquery/cq.log',
+" \ '--init={"cacheDirectory":"/home/pzx/.cache/cquery"}']
+" \ }
+
 let g:LanguageClient_serverCommands = {
-\ 'cpp': ['/usr/local/bin/cquery',
-\ '--log-file=/home/pzx/.cache/cquery/cq.log',
-\ '--init={"cacheDirectory":"/home/pzx/.cache/cquery"}']
+\ 'python': ['/usr/local/bin/pyls'],
 \ }
 
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <F12> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
