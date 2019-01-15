@@ -184,6 +184,23 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 let g:mkdp_auto_start = 1
 let g:mkdp_open_to_the_world = 1
 let g:mkdp_port = 8822
+let g:mkdp_echo_preview_url = 1
+
+" terminal
+" 支持REPLs(read-eval-print-loop)
+Plug 'kassio/neoterm'
+" Usage:
+" :Tnew
+" :vertical Tnew
+" 参考:help terminal
+tnoremap <Esc> <C-\><C-n>
+tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+inoremap <leader>rf <Esc>:TREPLSendFile<CR>
+inoremap <leader>rl <Esc>:TREPLSendLine<CR>
+vnoremap <leader>rs <Esc>:TREPLSendSelection<CR>
+nnoremap <leader>rf :TREPLSendFile<CR>
+nnoremap <leader>rl :TREPLSendLine<CR>
+
 "
 " sudo apt install cargo
 " function! BuildComposer(info)

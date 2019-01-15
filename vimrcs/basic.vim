@@ -265,10 +265,18 @@ map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-" map <S-j> <C-W>j
-" map <S-k> <C-W>k
-" map <S-h> <C-W>h
-" map <S-l> <C-W>l
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -320,10 +328,10 @@ map 0 ^
 " # Or for tmux >= 2.6
 " set -sg escape-time 10
 " 不然esc转化为了alt键。。。 8-bit clean mode
-nmap <A-j> mz:m+<cr>`z
-nmap <A-k> mz:m-2<cr>`z
-vmap <A-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <A-k> :m'<-2<cr>`>my`<mzgv`yo`z
+" nmap <A-j> mz:m+<cr>`z
+" nmap <A-k> mz:m-2<cr>`z
+" vmap <A-j> :m'>+<cr>`<my`>mzgv`yo`z
+" vmap <A-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 if has("mac") || has("macunix")
   nmap <D-j> <A-j>
