@@ -3,7 +3,7 @@
 
 已切换至NeoVim，也强烈推荐大家切换至NeoVim！切换无成本！！！
 
------
+![neovim最终预览](https://github.com/pzxbc/dotvim/blob/master/doc/nvim-preview.png)
 
 ## NeoVim安装配置
 
