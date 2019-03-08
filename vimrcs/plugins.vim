@@ -122,6 +122,7 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \}
 Plug 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Plug 'autozimu/LanguageClient-neovim', {
 "     \ 'branch': 'next',
