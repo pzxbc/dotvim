@@ -193,33 +193,14 @@ Plug 'kassio/neoterm'
 " :Tnew
 " :vertical Tnew
 " 参考:help terminal
-tnoremap <Esc> <C-\><C-n>
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 inoremap <leader>rf <Esc>:TREPLSendFile<CR>
 inoremap <leader>rl <Esc>:TREPLSendLine<CR>
 vnoremap <leader>rs <Esc>:TREPLSendSelection<CR>
 nnoremap <leader>rf :TREPLSendFile<CR>
 nnoremap <leader>rl :TREPLSendLine<CR>
+let g:neoterm_default_mod = 'belowight'
 
-"
-" sudo apt install cargo
-" function! BuildComposer(info)
-"   if a:info.status != 'unchanged' || a:info.force
-"     if has('nvim')
-"       !cargo build --release
-"     else
-"       !cargo build --release --no-default-features --features json-rpc
-"     endif
-"   endif
-" endfunction
-
-" Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-" 文件操作相关
-"
-" 文件、缓存快速打开
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'xolox/vim-misc'
-" Plug 'xolox/vim-session'
 
 " 编辑相关
 "
@@ -236,12 +217,6 @@ nnoremap <leader>rl :TREPLSendLine<CR>
 " 查找/移动/标记
 "
 " % 在配对标签自动跳转
-" Plug 'vim-scripts/matchit.zip'
-" Plug 'mileszs/ack.vim'
+Plug 'adelarsq/vim-matchit'
 
-" " vue component highlight
-" Plug 'othree/html5.vim'
-" Plug 'posva/vim-vue'
-
-" All of your Plugins must be added before the following line
 call plug#end()            " required

@@ -58,7 +58,7 @@ if has("unix")
     command! W w !sudo tee % > /dev/null
 endif
 
-set clipboard^=unnamed
+set clipboard+=unnamedplus
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -134,27 +134,12 @@ syntax enable
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-" set t_ut=
 try
     " colorscheme molokai
     set background=dark
-    " colorscheme solarized8_dark_flat
     colorscheme palenight
 catch
 endtry
-" light和dark切换
-nnoremap  <leader>B :<c-u>exe "colors" (g:colors_name =~# "dark"
-    \ ? substitute(g:colors_name, 'dark', 'light', '')
-    \ : substitute(g:colors_name, 'light', 'dark', '')
-    \ )<cr>
-
-fun! Solarized8Contrast(delta)
-  let l:schemes = map(["_low", "_flat", "", "_high"], '"solarized8_".(&background).v:val')
-  exe "colors" l:schemes[((a:delta+index(l:schemes, g:colors_name)) % 4 + 4) % 4]
-endf
-
-nmap <leader>c- :<c-u>call Solarized8Contrast(-v:count1)<cr>
-nmap <leader>c+ :<c-u>call Solarized8Contrast(+v:count1)<cr>
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -265,10 +250,12 @@ map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
+if has('nvim')
+    tnoremap <A-h> <C-\><C-N><C-w>h
+    tnoremap <A-j> <C-\><C-N><C-w>j
+    tnoremap <A-k> <C-\><C-N><C-w>k
+    tnoremap <A-l> <C-\><C-N><C-w>l
+endif
 inoremap <A-h> <C-\><C-N><C-w>h
 inoremap <A-j> <C-\><C-N><C-w>j
 inoremap <A-k> <C-\><C-N><C-w>k
@@ -348,37 +335,6 @@ func! DeleteTrailingWS()
 endfunc
 " autocmd BufWrite *.py :call DeleteTrailingWS()
 " autocmd BufWrite *.coffee :call DeleteTrailingWS()
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => Ack searching and cope displaying
-""    requires ack.vim - it's much better than vimgrep/grep
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" When you press gv you Ack after the selected text
-"vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-
-"" Open Ack and put the cursor in the right position
-"map <leader>g :Ack
-
-"" When you press <leader>r you can search and replace the selected text
-"vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
-
-"" Do :help cope if you are unsure what cope is. It's super useful!
-""
-"" When you search with Ack, display your results in cope by doing:
-""   <leader>cc
-""
-"" To go to the next search result do:
-""   <leader>n
-""
-"" To go to the previous search results do:
-""   <leader>p
-""
-"map <leader>cc :botright cope<cr>
-"map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-"map <leader>n :cn<cr>
-"map <leader>p :cp<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
