@@ -1,168 +1,112 @@
 # README
 
-`Vim`配置要求：
 
-* version >= 8.0
-* +Python
-* +termguicolors
-* +conceal
+已切换至NeoVim，也强烈推荐大家切换至NeoVim！切换无成本！！！
 
-## Vim安装
+-----
 
-### Windows
+## NeoVim安装配置
 
-https://github.com/vim/vim-win32-installer/releases
+### 安装
 
-另外需要安装Python
-
-### Debian
-
-`apt-get`暂时还不能安装`vim8.0`版本，需要手动编译安装
-
-```bash
-sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
-    libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
-    libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
-    python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git
-sudo apt-get remove vim vim-runtime gvim
-sudo apt-get remove vim-tiny vim-common vim-gui-common vim-nox
-wget https://github.com/vim/vim/archive/master.zip
-unzip master.zip
-cd vim-master
-./configure --with-features=huge \
-            --enable-multibyte \
-            --enable-rubyinterp=yes \
-            --enable-pythoninterp=yes \
-            --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
-            --enable-perlinterp=yes \
-            --enable-luainterp=yes \
-            --enable-gui=gtk2 \
-            --enable-cscope
-make VIMRUNTIMEDIR=/usr/local/share/vim/vim80
-sudo apt-get install checkinstall
-sudo checkinstall
-
-sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
-sudo update-alternatives --set editor /usr/local/bin/vim
-sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
-sudo update-alternatives --set vi /usr/local/bin/vim
-```
-
-### MacOS
-```bash
-brew install vim --with-lua
-```
-
-##Vim配置
-
-* 克隆配置文件
-
-  ```bash
-  git clone https://github.com/pzxbc/dotvim.git ~/.vim_runtime
-  cd ~/.vim_runtime
-  # mac & unix
-  ./install_awesome_vimrc.sh
-  # windows
-  ./install_awesome_vimrc.ps1
-  ```
-
-* 安装第三方工具
-
-  **MacOS**
-
-  ```bash
-  # Python语法检查
-  sudo pip install flake8
-  # Python 自动补全
-  sudo pip install jedi
-  # Lua语法检查
-  brew install lua --with-completion
-  luarocks install luacheck
-
-  # 快速查找
-  brew install ack
-
-  ```
-
-  **Windows**
-
-  **Debian**
-
-#### 语法检查
-
-#### 自动补全
-
-
-
-
-
-安装需要的第三方工具
+**Debian**
 
 ``` bash
-sudo apt-get install ack
-sudo apt-get install ctags
+sudo apt install neovim
 ```
 
-* 语法检查: `doc/语法检查配置.md`
-* 自动补全: doc/自动补全.md
+**MacOS**
+
+```
+brew install neovim
+```
+
+**Ubuntu**
+
+https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
 
 
-进入`~/.vim_runtime`目录，执行
+### 配置
+
+**修改默认编辑器**
+
 ``` bash
+sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+sudo update-alternatives --config vi
+sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+sudo update-alternatives --config vim
+sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+sudo update-alternatives --config editor
+```
+
+**使用`Vim`配置文件**
+
+``` bash
+mkdir -p .config/nvim
+touch init.vim
+```
+
+`init.vim`中添加下面内容
+
+```
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+```
+
+> 详细说明: 打开`nvim`，输入命令`:help nvim-from-vim`
+
+## Vim配置安装
+
+### 下载配置文件
+
+``` bash
+git clone https://github.com/pzxbc/dotvim.git ~/.vim_runtime
+cd ~/.vim_runtime
 ./install_awesome_vimrc.sh
 ```
 
-打开`Vim`，执行`:PlugInstall`命令安装插件，然后重启`Vim`就安装完毕了。
 
-### 其他系统安装
+### `Python`插件支持
 
-Todo
+创建Host。最新版的`deoplete`插件需要`Python3.6.1+`
 
-## 使用
-
-### 基本使用
-
-重新加载`Vim`配置: `:source $MYVIMRC`
-
-### 插件使用
-
-### vim-session
-`vim-session`插件能够保存`Vim`的所有工作状态，包括历史命令、打开的Buffer、窗
-口的分割等等，在你重新进入`Vim`时，打开之前的保存的session，可以让你完全恢复
-`Vim`之前的工作状态。
-
-#### 创建/打开session: `:OpenSession`
-如果`:OpenSession session_name`中的`session_name`是已经存在的session，那么就
-打开这个session，如果是不存在的则创建。进入`Vim`后，默认进入名为`default`的session。
-
-### 保存session: `:SaveSession`
-退出`Vim`时会自动保存session，当另外一个`Vim`打开了相同的session，可以使用
-`:SaveSession!`强制保存session。
-
-非正常退出`Vim`时，session还会处于lock状态，下次进入`Vim`时不能打开被lock的
-session。进入目录`~/.vim/session/`，删除对应session的lock文件即可。
-
-## vim配置调试
-
-1\. [查看变量在哪里设置](http://vim.wikia.com/wiki/Debug_unexpected_option_settings)
-```
-:verbose set tabstop?
+``` bash
+cd .vim_runtime
+python3 -m venv py3nvim
+source python3nvim/bin/activate
+pip install neovim
+# Python补全插件依赖库
+pip install jedi
 ```
 
-2\. 查看配置文件执行顺序
-```
-:scriptnames
-```
+修改`.vim_runtime/my_configs.vim`，指定Host
 
-3\. 调试
-http://inlehmansterms.net/2014/10/31/debugging-vim/
+> `Ubuntu 16/18`安装`Python3.7`
+> ``` bash
+> sudo apt install software-properties-common
+> sudo add-apt-repository ppa:deadsnakes/ppa
+> sudo apt update
+> sudo apt isntall python3.7
+> sudo apt install python3.7-venv
+> ```
+
+> `Python Host`是给基于`Python`语言的插件提供与`NeoVim`通信的服务端，基于RPC调用。如果有其他语言插件也需要安装对应`Host`。这种插件机制叫做[remote plugins](https://zhuanlan.zhihu.com/p/40696208)
+
+## 主题以及字体配置
+
+主题使用了`TrueColor`主题`palenight`，所以终端需要支持`TrueColor`
+
+* `Windows`上建议使用最新开发版的`Putty`(18年12月开发版是支持`TrueColor`的)
+* `Mac`上使用`iTerm2`
+
+由于使用了`vim-devicons`插件，需要`Nerd Font compatible font `字体支持，不然会出现方块字。目前我使用的字体是[SauceCodePro NF](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro/Regular/complete)
+
+字体安装参考[这里](https://github.com/ryanoasis/nerd-fonts#font-installation)，如果一开始不想麻烦安装字体，在`vimrcs/plugins.vim`中注释`vim-devicons`插件就好。
+
+## 使用 
+
+[外观配置]()
+[Vim配置调试]()
 
 
-## vim to neovim
-
-主题颜色使用了真彩色
-truecolor putty 最新版
-
-plugin的改变
-
-neovim python 路径
