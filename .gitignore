@@ -1,11 +1,6 @@
-temp_dirs/undodir/*
-sources_non_forked/ack.vim/.netrwhist
-temp_dirs/yankring_history_v2.txt
-sources_forked/yankring/doc/tags
-sources_non_forked/tlib/doc/tags
+temp_dirs/*
+!temp_dirs/undodir/.gitkeep
+!temp_dirs/README.md
 tags
 bundle/*
-!bundle/Vundle.vim
-!bundle/peaksea
 !bundle/mark
-!bundle/vim-auto-save
