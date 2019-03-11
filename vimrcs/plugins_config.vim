@@ -18,9 +18,10 @@ nmap <leader>mt ::MaximizerToggle<cr>
 " :Ag! - Start fzf in fullscreen and display the preview window above
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 fzf#vim#with_preview(),
   \                 <bang>0)
+  " \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  " \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
 
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
 command! -bang -nargs=* Rg
