@@ -79,22 +79,9 @@ Plug 'lifepillar/vim-cheat40'
 " 文件查找
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-nnoremap <expr> <c-p> ':FZF '.projectroot#guess().'/<CR>'
-nnoremap <leader>g :ProjectRootExe Ag<space>
 
 " 目录查看
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-" let g:NERDTreeWinSize = 20
-map <leader>nt :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark
-map <leader>ns :NERDTreeFind<cr>
-map <leader>nf :NERDTreeFocus<cr>
-" open NERDTree automatically when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-" " nerdtree过滤文件显示
-" let NERDTreeIgnore=['\.con$', '\~$']
-"
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " 缓冲区查看
@@ -106,7 +93,6 @@ let g:bufExplorerSortBy='mru'
 
 " 窗口最大化
 Plug 'szw/vim-maximizer'
-nmap <leader>mt ::MaximizerToggle<cr>
 
 " 自动保存
 Plug '907th/vim-auto-save'
@@ -116,8 +102,6 @@ let g:auto_save_silent = 1
 
 " 高亮标记
 Plug '~/.vim_runtime/bundle/mark'
-nmap <silent> <Leader>ha <Esc>:Mark<cr>
-nmap <silent> <Leader>hc <Esc>:MarkClear<cr>
 
 " 语法高亮和缩进
 " Plug 'sheerun/vim-polyglot'
@@ -137,18 +121,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " 字符对齐
 Plug 'godlygeek/tabular'
-if exists(":Tabularize")
-  nmap <Leader>a=  :Tabularize /=<CR>
-  map <Leader>a=  :Tabularize /=<CR>
-  map <Leader>a:  :Tabularize /:\zs<CR>
-  map <Leader>a:  :Tabularize /:\zs<CR>
-endif
-" nmap <Leader>a=  :Tabularize /=<CR>
-" map <Leader>a=  :Tabularize /=<CR>
-" nmap <Leader>a:  :Tabularize /:<CR>
-" map <Leader>a:  :Tabularize /:<CR>
-" nmap <Leader>a|  :Tabularize /|<CR>
-" map <Leader>a|  :Tabularize /|<CR>
 
 " 使用vim8新插件ale，支持异步语法检测
 " C++
@@ -235,8 +207,6 @@ Plug 'Shougo/neosnippet-snippets'
 " tags show
 Plug 'majutsushi/tagbar'
 " sudo apt install exuberant-ctags
-" nmap <F8> :TagbarToggle<CR>
-map <Leader>tb :TagbarOpen fj<CR>
 " ---------------------------------------------------------------------
 
 
@@ -252,18 +222,6 @@ let g:mkdp_echo_preview_url = 1
 " terminal
 " 支持REPLs(read-eval-print-loop)
 Plug 'kassio/neoterm'
-" Usage:
-" :Tnew
-" :vertical Tnew
-" 参考:help terminal
-tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
-inoremap <leader>rf <Esc>:TREPLSendFile<CR>
-inoremap <leader>rl <Esc>:TREPLSendLine<CR>
-vnoremap <leader>rs <Esc>:TREPLSendSelection<CR>
-nnoremap <leader>rf :TREPLSendFile<CR>
-nnoremap <leader>rl :TREPLSendLine<CR>
-let g:neoterm_default_mod = 'belowight'
-
 
 " 编辑相关
 "
@@ -273,11 +231,6 @@ let g:neoterm_default_mod = 'belowight'
 " http://www.wklken.me/posts/2015/06/07/vim-plugin-delimitmate.html
 " Plug 'Raimondi/delimitMate'
 Plug 'kien/rainbow_parentheses.vim'
-nnoremap <silent> <leader>rp <Esc>:RainbowParenthesesToggle<cr>
-\:RainbowParenthesesLoadRound<cr>
-\:RainbowParenthesesLoadSquare<cr>
-\:RainbowParenthesesLoadBraces<cr>
-\:RainbowParenthesesLoadChevrons<cr>
 " Plug 'tpope/vim-surround'
 
 " 查找/移动/标记
