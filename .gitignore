@@ -1,5 +1,5 @@
 temp_dirs/*
-!temp_dirs/undodir/.gitkeep
+!temp_dirs/undodir/.gitkep
 !temp_dirs/README.md
 tags
 bundle/*
