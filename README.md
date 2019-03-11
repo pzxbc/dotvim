@@ -106,7 +106,7 @@ pip install jedi
 
 ## 使用 
 
-[外观配置]()
-[Vim配置调试]()
+1. [SSH客户端配置](https://github.com/pzxbc/dotvim/blob/master/doc/SSH%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE.md)
+2. [语法检查配置](https://github.com/pzxbc/dotvim/blob/master/doc/%E8%AF%AD%E6%B3%95%E6%A3%80%E6%9F%A5%E9%85%8D%E7%BD%AE.md)
 
 
