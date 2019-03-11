@@ -65,7 +65,10 @@ map <Leader>tb :TagbarOpen fj<CR>
 " :Tnew
 " :vertical Tnew
 " 参考:help terminal
-tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+nnoremap <leader>t :vertical Tnew<CR>
+if has('nvim')
+    tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+endif
 inoremap <leader>rf <Esc>:TREPLSendFile<CR>
 inoremap <leader>rl <Esc>:TREPLSendLine<CR>
 vnoremap <leader>rs <Esc>:TREPLSendSelection<CR>
