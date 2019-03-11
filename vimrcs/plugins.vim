@@ -75,20 +75,49 @@ endfunction
 Plug 'ryanoasis/vim-devicons'
 " vim操作
 Plug 'lifepillar/vim-cheat40'
+
 " 文件查找
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+nnoremap <expr> <c-p> ':FZF '.projectroot#guess().'/<CR>'
+nnoremap <leader>g :ProjectRootExe Ag<space>
+
 " 目录查看
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" let g:NERDTreeWinSize = 20
+map <leader>nt :NERDTreeToggle<cr>
+map <leader>nb :NERDTreeFromBookmark
+map <leader>ns :NERDTreeFind<cr>
+map <leader>nf :NERDTreeFocus<cr>
+" open NERDTree automatically when vim starts up on opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" " nerdtree过滤文件显示
+" let NERDTreeIgnore=['\.con$', '\~$']
+"
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
 " 缓冲区查看
 Plug 'vim-scripts/bufexplorer.zip'
+let g:bufExplorerDefaultHelp=1
+let g:bufExplorerShowRelativePath=0
+let g:bufExplorerFindActive=1
+let g:bufExplorerSortBy='mru'
+
 " 窗口最大化
 Plug 'szw/vim-maximizer'
+nmap <leader>mt ::MaximizerToggle<cr>
+
 " 自动保存
 Plug '907th/vim-auto-save'
+let g:auto_save=1  " enable AutoSave on Vim startup
+let g:auto_save_silent = 1
+" let g:auto_save_in_insert_mode = 0  " do not save while in insert mode in vim7.3 completeDone required vim7.4
+
 " 高亮标记
 Plug '~/.vim_runtime/bundle/mark'
+nmap <silent> <Leader>ha <Esc>:Mark<cr>
+nmap <silent> <Leader>hc <Esc>:MarkClear<cr>
 
 " 语法高亮和缩进
 " Plug 'sheerun/vim-polyglot'
@@ -101,9 +130,26 @@ Plug 'dbakker/vim-projectroot'
 " 加载项目目录下的.lvimrc文件
 Plug 'embear/vim-localvimrc'
 Plug 'tpope/vim-commentary'
+
 Plug 'editorconfig/editorconfig-vim'
+" work with fugitive
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
 " 字符对齐
 Plug 'godlygeek/tabular'
+if exists(":Tabularize")
+  nmap <Leader>a=  :Tabularize /=<CR>
+  map <Leader>a=  :Tabularize /=<CR>
+  map <Leader>a:  :Tabularize /:\zs<CR>
+  map <Leader>a:  :Tabularize /:\zs<CR>
+endif
+" nmap <Leader>a=  :Tabularize /=<CR>
+" map <Leader>a=  :Tabularize /=<CR>
+" nmap <Leader>a:  :Tabularize /:<CR>
+" map <Leader>a:  :Tabularize /:<CR>
+" nmap <Leader>a|  :Tabularize /|<CR>
+" map <Leader>a|  :Tabularize /|<CR>
+
 " 使用vim8新插件ale，支持异步语法检测
 " C++
 " cppcheck http://cppcheck.sourceforge.net/
@@ -128,6 +174,22 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 "     \ 'branch': 'next',
 "     \ 'do': 'bash install.sh',
 "     \ }
+" set hidden
+" " let g:LanguageClient_serverCommands = {
+" " \ 'cpp': ['/usr/local/bin/cquery',
+" " \ '--log-file=/home/pzx/.cache/cquery/cq.log',
+" " \ '--init={"cacheDirectory":"/home/pzx/.cache/cquery"}']
+" " \ }
+
+" let g:LanguageClient_serverCommands = {
+" \ 'python': ['/usr/local/bin/pyls'],
+" \ }
+
+" nnoremap <F12> :call LanguageClient_contextMenu()<CR>
+" " Or map each action separately
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -210,10 +272,13 @@ let g:neoterm_default_mod = 'belowight'
 " 自动补全引号括号
 " http://www.wklken.me/posts/2015/06/07/vim-plugin-delimitmate.html
 " Plug 'Raimondi/delimitMate'
-" Plug 'kien/rainbow_parentheses.vim'
+Plug 'kien/rainbow_parentheses.vim'
+nnoremap <silent> <leader>rp <Esc>:RainbowParenthesesToggle<cr>
+\:RainbowParenthesesLoadRound<cr>
+\:RainbowParenthesesLoadSquare<cr>
+\:RainbowParenthesesLoadBraces<cr>
+\:RainbowParenthesesLoadChevrons<cr>
 " Plug 'tpope/vim-surround'
-" 删掉了CompleteDone事件，兼容Vim7.3
-" Plug '~/.vim_runtime/bundle/vim-auto-save'
 
 " 查找/移动/标记
 "
