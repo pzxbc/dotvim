@@ -93,6 +93,10 @@ pip install jedi
 
 > `Python Host`是给基于`Python`语言的插件提供与`NeoVim`通信的服务端，基于RPC调用。如果有其他语言插件也需要安装对应`Host`。这种插件机制叫做[remote plugins](https://zhuanlan.zhihu.com/p/40696208)
 
+## 插件安装
+
+打开`nvim`，执行`:PluginInstall`命令
+
 ## 主题以及字体配置
 
 主题使用了`TrueColor`主题`palenight`，所以终端需要支持`TrueColor`
@@ -103,6 +107,7 @@ pip install jedi
 由于使用了`vim-devicons`插件，需要`Nerd Font compatible font `字体支持，不然会出现方块字。目前我使用的字体是[SauceCodePro NF](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro/Regular/complete)
 
 字体安装参考[这里](https://github.com/ryanoasis/nerd-fonts#font-installation)，如果一开始不想麻烦安装字体，在`vimrcs/plugins.vim`中注释`vim-devicons`插件就好。
+
 
 ## 使用 
 
