@@ -43,6 +43,7 @@ sudo update-alternatives --config editor
 
 ``` bash
 mkdir -p .config/nvim
+cd .config/nvim
 touch init.vim
 ```
 
