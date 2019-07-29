@@ -72,7 +72,7 @@ function! LightlineMode()
 endfunction
 
 " 图标
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 " vim操作
 Plug 'lifepillar/vim-cheat40'
 
