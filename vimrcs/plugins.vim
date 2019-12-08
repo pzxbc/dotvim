@@ -6,6 +6,9 @@
 
 call plug#begin('~/.vim_runtime/bundle')
 
+" 键位映射查看
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
 " 选出常用的 其他都暂时屏蔽
 " 主题
 Plug 'lifepillar/vim-solarized8'
@@ -17,10 +20,11 @@ Plug 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'colorscheme': 'palenight',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'filename' ], ['ctrlpmark'] ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'cocstatus', 'readonly', 'filename', 'modified' ], ['ctrlpmark'] ],
       \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component_function': {
+      \   'cocstatus': 'coc#status',
       \   'filename': 'LightlineFilename',
       \   'fileformat': 'LightlineFileformat',
       \   'filetype': 'LightlineFiletype',
@@ -71,25 +75,21 @@ function! LightlineMode()
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
 " 图标
 Plug 'ryanoasis/vim-devicons'
 " vim操作
 Plug 'lifepillar/vim-cheat40'
 
-" 文件查找
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" " 文件查找
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 " 目录查看
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" 缓冲区查看
-Plug 'vim-scripts/bufexplorer.zip'
-let g:bufExplorerDefaultHelp=1
-let g:bufExplorerShowRelativePath=0
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='mru'
 
 " 窗口最大化
 Plug 'szw/vim-maximizer'
@@ -139,8 +139,14 @@ let g:ale_linters = {
 \   'cpp': ['clangcheck', 'clangtidy'],
 \   'python': ['flake8'],
 \}
-Plug 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" coc completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" 暂时屏蔽补全插件
+" 测试一下新的插件 coc.vim
+" Plug 'ervandew/supertab'
+" let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Plug 'autozimu/LanguageClient-neovim', {
 "     \ 'branch': 'next',
@@ -163,44 +169,45 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-" Tmux 补齐
-Plug 'wellle/tmux-complete.vim'
-" Python 编程
-Plug 'zchee/deoplete-jedi'
-" python 补全使用https://github.com/palantir/python-language-server
+"
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
+" " Tmux 补齐
+" Plug 'wellle/tmux-complete.vim'
+" " Python 编程
+" Plug 'zchee/deoplete-jedi'
+" " python 补全使用https://github.com/palantir/python-language-server
 "
 " ---------------------------------------------------------------------
-" 代码片段
-Plug 'Shougo/neosnippet.vim'
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+" " 代码片段
+" Plug 'Shougo/neosnippet.vim'
+" " Plugin key-mappings.
+" " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" " SuperTab like snippets behavior.
+" " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+" "imap <expr><TAB>
+" " \ pumvisible() ? "\<C-n>" :
+" " \ neosnippet#expandable_or_jumpable() ?
+" " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-" " For conceal markers.
-" if has('conceal')
-"   set conceallevel=2 concealcursor=niv
-" endif
+" " " For conceal markers.
+" " if has('conceal')
+" "   set conceallevel=2 concealcursor=niv
+" " endif
 
-Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/neosnippet-snippets'
 " ---------------------------------------------------------------------
 
 " ---------------------------------------------------------------------
