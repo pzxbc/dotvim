@@ -87,10 +87,6 @@ Plug 'lifepillar/vim-cheat40'
 " Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
-" 目录查看
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
 " 窗口最大化
 Plug 'szw/vim-maximizer'
 
