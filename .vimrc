@@ -11,3 +11,17 @@ catch
 endtry
 
 
+" 顺序
+" 基础 vim 和 neovim 通用
+" basic.vim
+" " 特别平台的 比如truecolor neovim
+" extended.vim
+" " 特别文件
+" file_types.vim
+" " 插件
+" plugins.vim
+" " 插件配置
+" plugins_config.vim
+" " maps 在最后，保证映射不被覆盖
+" maps.vim
+
