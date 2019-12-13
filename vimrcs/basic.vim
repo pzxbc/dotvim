@@ -34,7 +34,6 @@ set autoread
 " set working directory is always the same as the file you are editing
 autocmd BufEnter * silent! lcd %:p:h
 
-
 " Fast saving
 "nmap <leader>w :w!<cr>
 
@@ -43,8 +42,6 @@ autocmd BufEnter * silent! lcd %:p:h
 if has("unix")
     command! W w !sudo tee % > /dev/null
 endif
-
-set clipboard+=unnamedplus
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -114,18 +111,6 @@ set foldcolumn=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
-
-" 终端和GUI下都使用256色
-" 设置truecolor
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-try
-    " colorscheme molokai
-    set background=dark
-    colorscheme palenight
-catch
-endtry
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
