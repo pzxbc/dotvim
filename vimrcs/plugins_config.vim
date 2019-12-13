@@ -16,27 +16,27 @@ nmap <leader>mt ::MaximizerToggle<cr>
 " fzf
 " :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
 " :Ag! - Start fzf in fullscreen and display the preview window above
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 fzf#vim#with_preview(),
-  \                 <bang>0)
-  " \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  " \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+" command! -bang -nargs=* Ag
+"   \ call fzf#vim#ag(<q-args>,
+"   \                 fzf#vim#with_preview(),
+"   \                 <bang>0)
+"   " \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+"   " \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
 
-" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+" " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \   <bang>0)
 
-" Likewise, Files command with preview window
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" " Likewise, Files command with preview window
+" command! -bang -nargs=? -complete=dir Files
+"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-nnoremap <expr> <c-p> ':Files! '.projectroot#guess().'/<CR>'
-nnoremap <leader>g :ProjectRootExe Ag!<space>
+" nnoremap <expr> <c-p> ':Files! '.projectroot#guess().'/<CR>'
+" nnoremap <leader>g :ProjectRootExe Ag!<space>
 
 
 " mark
@@ -225,23 +225,32 @@ nnoremap <silent> <leader>      :<c-u>WhichKey ','<CR>
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0
 let g:Lf_UseVersionControlTool = 0
-let g:Lf_IgnoreCurrentBufferName = 1
+let g:Lf_ShowHidden = 1
+" 工作目录模式
+let g:Lf_WorkingDirectoryMode = 'Ac'
 " popup mode
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
-let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+" let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
 let g:Lf_ShortcutF = "<leader>ff"
+let g:Lf_WildIgnore = {
+            \ 'dir': ['.svn','.git','.hg'],
+            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+            \}
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+noremap <leader>fa :<C-U><C-R>=printf("Leaderf! rg --wd-mode=Ac -e %s", "")<CR>
 
-noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
-noremap <C-F> :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR>
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+" search text in projectdir
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg --wd-mode=Ac -e %s ", expand("<cword>"))<CR><CR>
 " search visually selected text literally
 xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+" 重回上次搜索结果
 noremap go :<C-U>Leaderf! rg --recall<CR>
 
 " should use `Leaderf gtags --update` first
