@@ -42,6 +42,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
+" Markdown preview
+" Use prebuild
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 " ide 特性
 " coc completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -63,15 +66,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " \   'cpp': ['clangcheck', 'clangtidy'],
 " \   'python': ['flake8'],
 " \}
-
-" markdown预览
-" if you don't have nodejs and yarn
-" use pre build
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-" let g:mkdp_auto_start = 1
-" let g:mkdp_open_to_the_world = 1
-" let g:mkdp_port = 8822
-" let g:mkdp_echo_preview_url = 1
 
 " 编辑相关
 "

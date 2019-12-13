@@ -176,6 +176,16 @@ let g:rainbow_active = 1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 
+" ------------------------------------------------
+" MarkdownPreview
+" Plug 'iamcco/markdown-preview.nvim'
+" ------------------------------------------------
+let g:mkdp_auto_start = 1
+let g:mkdp_open_to_the_world = 1
+let g:mkdp_port = 8822
+let g:mkdp_echo_preview_url = 1
+
+
 " " neoterm
 " " Usage:
 " " :Tnew
