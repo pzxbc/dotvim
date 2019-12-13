@@ -103,12 +103,14 @@ Plug '~/.vim_runtime/bundle/mark'
 " Plug 'sheerun/vim-polyglot'
 
 " 通用开发工具
+" git
+Plug 'tpope/vim-fugitive'
 " Linux Commands
 Plug 'tpope/vim-eunuch'
-Plug 'dbakker/vim-projectroot'
+" Plug 'dbakker/vim-projectroot'
 " 分项目配置
 " 加载项目目录下的.lvimrc文件
-Plug 'embear/vim-localvimrc'
+" Plug 'embear/vim-localvimrc'
 Plug 'tpope/vim-commentary'
 
 Plug 'editorconfig/editorconfig-vim'
@@ -216,11 +218,11 @@ Plug 'majutsushi/tagbar'
 " markdown预览
 " if you don't have nodejs and yarn
 " use pre build
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-let g:mkdp_auto_start = 1
-let g:mkdp_open_to_the_world = 1
-let g:mkdp_port = 8822
-let g:mkdp_echo_preview_url = 1
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+" let g:mkdp_auto_start = 1
+" let g:mkdp_open_to_the_world = 1
+" let g:mkdp_port = 8822
+" let g:mkdp_echo_preview_url = 1
 
 " terminal
 " 支持REPLs(read-eval-print-loop)
