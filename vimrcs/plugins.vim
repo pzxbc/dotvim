@@ -78,7 +78,7 @@ endfunction
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " 图标
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 " vim操作
 Plug 'lifepillar/vim-cheat40'
 
