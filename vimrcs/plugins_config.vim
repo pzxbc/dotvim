@@ -1,48 +1,158 @@
-" NerdTree
-" let g:NERDTreeWinSize = 20
-map <leader>nt :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark
-map <leader>ns :NERDTreeFind<cr>
-map <leader>nf :NERDTreeFocus<cr>
-" open NERDTree automatically when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-" " nerdtree过滤文件显示
-" let NERDTreeIgnore=['\.con$', '\~$']
-"
-" vim-maximizer
+" ------------------------------
+" palenight theme
+" Plug 'drewtempelmeyer/palenight.vim'
+" ------------------------------
+" 设置truecolor
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+try
+    " colorscheme molokai
+    set background=dark
+    colorscheme palenight
+catch
+
+endtry
+
+" ------------------------------------------------
+" 状态栏
+" Plug 'itchyny/lightline.vim'
+" ------------------------------------------------
+let g:lightline = {
+      \ 'colorscheme': 'palenight',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], ['fugitivestatus'], [ 'cocstatus', 'readonly', 'filename', 'modified' ]],
+      \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ]]
+      \ },
+      \ 'component': {
+      \   'fugitivestatus': '%{FugitiveStatusline()}',
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'filename': 'LightlineFilename',
+      \   'fileformat': 'LightlineFileformat',
+      \   'filetype': 'LightlineFiletype',
+      \   'fileencoding': 'LightlineFileencoding',
+      \   'mode': 'LightlineMode',
+      \ },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ }
+
+function! LightlineModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineReadonly()
+  return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+
+function! LightlineFilename()
+  let fname = expand('%:t')
+  return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
+        \ fname == '__Tagbar__' ? g:lightline.fname :
+        \ fname =~ '__Gundo\|NERD_tree' ? '' :
+        \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightlineMode()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? 'Tagbar' :
+        \ fname == 'ControlP' ? 'CtrlP' :
+        \ fname == '__Gundo__' ? 'Gundo' :
+        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+
+" ------------------------------------------------
+" 状态栏
+" Plug 'szw/vim-maximizer'
+" ------------------------------------------------
 nmap <leader>mt ::MaximizerToggle<cr>
 
-" fzf
-" :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
-" :Ag! - Start fzf in fullscreen and display the preview window above
-" command! -bang -nargs=* Ag
-"   \ call fzf#vim#ag(<q-args>,
-"   \                 fzf#vim#with_preview(),
-"   \                 <bang>0)
-"   " \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-"   " \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
 
-" " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
-" command! -bang -nargs=* Rg
-"   \ call fzf#vim#grep(
-"   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
-"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-"   \   <bang>0)
+" ------------------------------------------------
+" 搜索查找
+" Plug 'Yggdroot/LeaderF'
+" ------------------------------------------------
+" don't show the help in normal mode
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_ShowHidden = 1
+" 工作目录模式
+let g:Lf_WorkingDirectoryMode = 'Ac'
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+" let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-" " Likewise, Files command with preview window
-" command! -bang -nargs=? -complete=dir Files
-"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+let g:Lf_ShortcutF = "<leader>ff"
+let g:Lf_WildIgnore = {
+            \ 'dir': ['.svn','.git','.hg'],
+            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+            \}
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+noremap <leader>fa :<C-U><C-R>=printf("Leaderf! rg --wd-mode=Ac -e %s", "")<CR>
 
-" nnoremap <expr> <c-p> ':Files! '.projectroot#guess().'/<CR>'
-" nnoremap <leader>g :ProjectRootExe Ag!<space>
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+" search text in projectdir
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg --wd-mode=Ac -e %s ", expand("<cword>"))<CR><CR>
+" search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+" 重回上次搜索结果
+noremap go :<C-U>Leaderf! rg --recall<CR>
+
+" should use `Leaderf gtags --update` first
+let g:Lf_GtagsAutoGenerate = 0
+let g:Lf_Gtagslabel = 'native-pygments'
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
+" ------------------------------------------------
+" save
+" Plug '907th/vim-auto-save'
+" ------------------------------------------------
+let g:auto_save=1  " enable AutoSave on Vim startup
+let g:auto_save_silent = 1
 
 
+" ------------------------------------------------
+" mark
+" Plug 'mark'
+" ------------------------------------------------
 " mark
 nmap <silent> <Leader>ha <Esc>:Mark<cr>
 nmap <silent> <Leader>hc <Esc>:MarkClear<cr>
 
+" ------------------------------------------------
+" mark
+" Plug 'godlygeek/tabular'
+" ------------------------------------------------
 " tabular
 if exists(":Tabularize")
   nmap <Leader>a=  :Tabularize /=<CR>
@@ -50,39 +160,42 @@ if exists(":Tabularize")
   map <Leader>a:  :Tabularize /:\zs<CR>
   map <Leader>a:  :Tabularize /:\zs<CR>
 endif
-" nmap <Leader>a=  :Tabularize /=<CR>
-" map <Leader>a=  :Tabularize /=<CR>
-" nmap <Leader>a:  :Tabularize /:<CR>
-" map <Leader>a:  :Tabularize /:<CR>
-" nmap <Leader>a|  :Tabularize /|<CR>
-" map <Leader>a|  :Tabularize /|<CR>
-"
-" tagbar
-map <Leader>tb :TagbarOpen fj<CR>
 
-" neoterm
-" Usage:
-" :Tnew
-" :vertical Tnew
-" 参考:help terminal
-nnoremap <leader>t :vertical Tnew<CR>
-if has('nvim')
-    tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
-endif
-inoremap <leader>rf <Esc>:TREPLSendFile<CR>
-inoremap <leader>rl <Esc>:TREPLSendLine<CR>
-vnoremap <leader>rs <Esc>:TREPLSendSelection<CR>
-nnoremap <leader>rf :TREPLSendFile<CR>
-nnoremap <leader>rl :TREPLSendLine<CR>
-let g:neoterm_default_mod = 'belowight'
+" ------------------------------------------------
+" rainbow
+" Plug 'luochen1990/rainbow'
+" ------------------------------------------------
+let g:rainbow_active = 1
 
-" rainbow_parentheses
-nnoremap <silent> <leader>rp <Esc>:RainbowParenthesesToggle<cr>
-\:RainbowParenthesesLoadRound<cr>
-\:RainbowParenthesesLoadSquare<cr>
-\:RainbowParenthesesLoadBraces<cr>
-\:RainbowParenthesesLoadChevrons<cr>
 
+" ------------------------------------------------
+" editorconfig
+" Plug 'editorconfig/editorconfig-vim'
+" ------------------------------------------------
+" work with fugitive
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+
+" " neoterm
+" " Usage:
+" " :Tnew
+" " :vertical Tnew
+" " 参考:help terminal
+" nnoremap <leader>t :vertical Tnew<CR>
+" if has('nvim')
+"     tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+" endif
+" inoremap <leader>rf <Esc>:TREPLSendFile<CR>
+" inoremap <leader>rl <Esc>:TREPLSendLine<CR>
+" vnoremap <leader>rs <Esc>:TREPLSendSelection<CR>
+" nnoremap <leader>rf :TREPLSendFile<CR>
+" nnoremap <leader>rl :TREPLSendLine<CR>
+" let g:neoterm_default_mod = 'belowight'
+
+" ------------------------------
+" Coc
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" ------------------------------
 " coc config
 
 "if hidden is not set, TextEdit might fail.
@@ -180,10 +293,6 @@ xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
-
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
@@ -218,67 +327,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 nnoremap <silent> <leader>      :<c-u>WhichKey ','<CR>
 
 " ------------------------------
-" LeaderF
-" ------------------------------
-"
-" don't show the help in normal mode
-let g:Lf_HideHelp = 1
-let g:Lf_UseCache = 0
-let g:Lf_UseVersionControlTool = 0
-let g:Lf_ShowHidden = 1
-" 工作目录模式
-let g:Lf_WorkingDirectoryMode = 'Ac'
-" popup mode
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
-" let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
-
-let g:Lf_ShortcutF = "<leader>ff"
-let g:Lf_WildIgnore = {
-            \ 'dir': ['.svn','.git','.hg'],
-            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
-            \}
-noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-noremap <leader>fa :<C-U><C-R>=printf("Leaderf! rg --wd-mode=Ac -e %s", "")<CR>
-
-noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
-" search text in projectdir
-noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg --wd-mode=Ac -e %s ", expand("<cword>"))<CR><CR>
-" search visually selected text literally
-xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
-" 重回上次搜索结果
-noremap go :<C-U>Leaderf! rg --recall<CR>
-
-" should use `Leaderf gtags --update` first
-let g:Lf_GtagsAutoGenerate = 0
-let g:Lf_Gtagslabel = 'native-pygments'
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-
-" ------------------------------
 " Coc-extension explorer
 " ------------------------------
 noremap <leader>ge :CocCommand explorer<CR>
 nnoremap ge :CocCommand explorer<CR>
-
-
-" ------------------------------
-" palenight theme
-" ------------------------------
-" 设置truecolor
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-try
-    " colorscheme molokai
-    set background=dark
-    colorscheme palenight
-catch
-endtry
