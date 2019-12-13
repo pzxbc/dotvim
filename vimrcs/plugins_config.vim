@@ -268,3 +268,17 @@ noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 noremap <leader>ge :CocCommand explorer<CR>
 nnoremap ge :CocCommand explorer<CR>
 
+
+" ------------------------------
+" palenight theme
+" ------------------------------
+" 设置truecolor
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+try
+    " colorscheme molokai
+    set background=dark
+    colorscheme palenight
+catch
+endtry
