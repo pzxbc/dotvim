@@ -18,6 +18,12 @@ catch
 endtry
 
 
+" nvim term
+if has("nvim")
+  au TermOpen * tnoremap <Esc> <c-\><c-n>
+endif
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Command mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
