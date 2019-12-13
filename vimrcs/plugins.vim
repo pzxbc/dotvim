@@ -20,8 +20,11 @@ Plug 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'colorscheme': 'palenight',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'cocstatus', 'readonly', 'filename', 'modified' ], ['ctrlpmark'] ],
-      \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \   'left': [ [ 'mode', 'paste' ], ['fugitivestatus'], [ 'cocstatus', 'readonly', 'filename', 'modified' ]],
+      \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ]]
+      \ },
+      \ 'component': {
+      \   'fugitivestatus': '%{FugitiveStatusline()}',
       \ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
@@ -30,7 +33,6 @@ let g:lightline = {
       \   'filetype': 'LightlineFiletype',
       \   'fileencoding': 'LightlineFileencoding',
       \   'mode': 'LightlineMode',
-      \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
@@ -78,7 +80,7 @@ endfunction
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " 图标
-" Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 " vim操作
 Plug 'lifepillar/vim-cheat40'
 
@@ -108,6 +110,7 @@ Plug 'tpope/vim-fugitive'
 " Linux Commands
 Plug 'tpope/vim-eunuch'
 " Plug 'dbakker/vim-projectroot'
+Plug 'tpope/vim-fugitive'
 " 分项目配置
 " 加载项目目录下的.lvimrc文件
 " Plug 'embear/vim-localvimrc'
