@@ -208,6 +208,27 @@ let g:mkdp_echo_preview_url = 1
 " ------------------------------
 " coc config
 
+" 全局配置
+" :CocConfig的配置文件存在于.config/nvim/coc-settings.json
+let g:coc_user_config = {
+            \'explorer.icon.enableNerdfont': v:true
+            \}
+
+" 全局插件
+let g:coc_global_extensions = [
+            \'coc-explorer',
+            \'coc-lists',
+            \'coc-highlight',
+            \'coc-prettier',
+            \'coc-pairs',
+            \'coc-json',
+            \'coc-css',
+            \'coc-html',
+            \'coc-tslint',
+            \'coc-tsserver',
+            \'coc-yaml'
+            \]
+
 "if hidden is not set, TextEdit might fail.
 set hidden
 
