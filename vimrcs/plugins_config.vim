@@ -125,7 +125,8 @@ xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
 noremap go :<C-U>Leaderf! rg --recall<CR>
 
 " should use `Leaderf gtags --update` first
-let g:Lf_GtagsAutoGenerate = 0
+let g:Lf_GtagsAutoGenerate = 1
+let g:Lf_Gtagsconf = '/usr/local/share/gtags/gtags.conf'
 let g:Lf_Gtagslabel = 'native-pygments'
 noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
 noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
@@ -155,10 +156,10 @@ nmap <silent> <Leader>hc <Esc>:MarkClear<cr>
 " ------------------------------------------------
 " tabular
 if exists(":Tabularize")
-  nmap <Leader>a=  :Tabularize /=<CR>
-  map <Leader>a=  :Tabularize /=<CR>
-  map <Leader>a:  :Tabularize /:\zs<CR>
-  map <Leader>a:  :Tabularize /:\zs<CR>
+nmap <Leader>a=  :Tabularize /=<CR>
+map <Leader>a=  :Tabularize /=<CR>
+map <Leader>a:  :Tabularize /:\zs<CR>
+map <Leader>a:  :Tabularize /:\zs<CR>
 endif
 
 " ------------------------------------------------
@@ -211,23 +212,23 @@ let g:mkdp_echo_preview_url = 1
 " 全局配置
 " :CocConfig的配置文件存在于.config/nvim/coc-settings.json
 let g:coc_user_config = {
-            \'explorer.icon.enableNerdfont': v:true
-            \}
+        \'explorer.icon.enableNerdfont': v:true
+        \}
 
 " 全局插件
 let g:coc_global_extensions = [
-            \'coc-explorer',
-            \'coc-lists',
-            \'coc-highlight',
-            \'coc-prettier',
-            \'coc-pairs',
-            \'coc-json',
-            \'coc-css',
-            \'coc-html',
-            \'coc-tslint',
-            \'coc-tsserver',
-            \'coc-yaml'
-            \]
+        \'coc-explorer',
+        \'coc-lists',
+        \'coc-highlight',
+        \'coc-prettier',
+        \'coc-pairs',
+        \'coc-json',
+        \'coc-css',
+        \'coc-html',
+        \'coc-tslint',
+        \'coc-tsserver',
+        \'coc-yaml'
+        \]
 
 "if hidden is not set, TextEdit might fail.
 set hidden
@@ -251,14 +252,14 @@ set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
@@ -284,11 +285,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+if (index(['vim','help'], &filetype) >= 0)
+execute 'h '.expand('<cword>')
+else
+call CocAction('doHover')
+endif
 endfunction
 
 " Highlight symbol under cursor on CursorHold
@@ -302,11 +303,11 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+autocmd!
+" Setup formatexpr specified filetype(s).
+autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+" Update signature help on jump placeholder
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
