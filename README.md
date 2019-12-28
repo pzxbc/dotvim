@@ -75,7 +75,7 @@ cd ~/.vim_runtime
 ``` bash
 cd .vim_runtime
 python3 -m venv py3nvim
-source python3nvim/bin/activate
+source py3nvim/bin/activate
 pip install neovim
 # Python补全插件依赖库
 pip install jedi

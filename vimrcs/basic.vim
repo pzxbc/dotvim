@@ -2,24 +2,7 @@
 " Maintainer:
 "       pzxbc
 "       https://github.com/pzxbc/dotvim
-"
-"
-" Sections:
-"    -> General
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
-"    -> Misc
-"    -> Helper functions
-"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -27,12 +10,19 @@
 " vimscript learning: http://learnvimscriptthehardway.stevelosh.com/
 " reload vimrc
 " :source $MYVIMRC
+"
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 
 " Sets how many lines of history VIM has to remember
-set history=200
+set history=1000
 
 "show the line number
 set number
+" relative number
+set relativenumber
 
 " Enable filetype plugins
 filetype plugin on
@@ -44,11 +34,6 @@ set autoread
 " set working directory is always the same as the file you are editing
 autocmd BufEnter * silent! lcd %:p:h
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
-
 " Fast saving
 "nmap <leader>w :w!<cr>
 
@@ -57,8 +42,6 @@ let g:mapleader = ","
 if has("unix")
     command! W w !sudo tee % > /dev/null
 endif
-
-set clipboard+=unnamedplus
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -74,7 +57,7 @@ set wildmode=list:longest,full
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
-set wildignore+=.git,.snv,.hg,.DS_Store
+set wildignore+=.git,.svn,.hg,.DS_Store
 
 "Always show current position
 set ruler
@@ -128,18 +111,6 @@ set foldcolumn=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
-
-" 终端和GUI下都使用256色
-" 设置truecolor
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-try
-    " colorscheme molokai
-    set background=dark
-    colorscheme palenight
-catch
-endtry
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -272,11 +243,22 @@ map <leader>bd :Bclose<cr>
 map <leader>ba :1,1000 bd!<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
+noremap <leader>tn :tabnew<cr>
+noremap <leader>tc :tabclose<cr>
+noremap <leader>tm :tabmove
+noremap <leader>n :tabnext<cr>
+noremap <leader>p :tabprevious<cr>
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -326,28 +308,6 @@ if has("mac") || has("macunix")
   vmap <D-j> <A-j>
   vmap <D-k> <A-k>
 endif
-
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-" autocmd BufWrite *.py :call DeleteTrailingWS()
-" autocmd BufWrite *.coffee :call DeleteTrailingWS()
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
