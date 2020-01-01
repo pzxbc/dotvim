@@ -95,6 +95,7 @@ nmap <leader>mt ::MaximizerToggle<cr>
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0
+let g:Lf_UseMemoryCache = 0
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_ShowHidden = 1
 " 工作目录模式

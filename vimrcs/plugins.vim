@@ -10,6 +10,7 @@ call plug#begin('~/.vim_runtime/bundle')
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " vim操作查看
 Plug 'lifepillar/vim-cheat40'
+Plug 'easymotion/vim-easymotion'
 " 图标
 Plug 'ryanoasis/vim-devicons'
 " 主题
