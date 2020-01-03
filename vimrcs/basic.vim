@@ -21,8 +21,8 @@ set history=1000
 
 "show the line number
 set number
-" relative number
-set relativenumber
+" " relative number
+" set relativenumber
 
 " Enable filetype plugins
 filetype plugin on

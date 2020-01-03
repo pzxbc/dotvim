@@ -2,4 +2,4 @@
 "
 " config for neovim python host
 " nvim pynvm python path
-let g:python3_host_prog = '/home/gzpengzhangxiang/.vim_runtime/py3nvim/bin/python'
+let g:python3_host_prog = '/Users/g20-mac/.vim_runtime/py3nvim/bin/python'
