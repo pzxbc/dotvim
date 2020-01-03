@@ -5,7 +5,7 @@ source ~/.vim_runtime/vimrcs/plugins.vim
 source ~/.vim_runtime/vimrcs/plugins_config.vim
 
 try
-source ~/.vim_runtime/my_configs.vim
+source ~/.vim_runtime/my_configs_local.vim
 catch
 endtry
 
